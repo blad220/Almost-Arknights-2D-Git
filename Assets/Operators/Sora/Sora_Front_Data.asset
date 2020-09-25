@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a64e5b0e436d4bed9780211ae245f7b, type: 3}
+  m_Name: Sora_Front_Data
+  m_EditorClassIdentifier: 
+  dataName: Sora_Front
+  dragonBonesJSON: {fileID: 4900000, guid: c2a9e7ce71d36da4a81886f5270b30be, type: 3}
+  textureAtlas:
+  - textureAtlasJSON: {fileID: 4900000, guid: da63ce2ba92fdd641acd939fbc5b1780, type: 3}
+    texture: {fileID: 2800000, guid: 540b664c2441e3c4f9d4c0f325abf61e, type: 3}
+    material: {fileID: 2100000, guid: 79b2b4fa1b2012d408df3c7705017424, type: 2}
+    uiMaterial: {fileID: 0}
