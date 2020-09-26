@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a64e5b0e436d4bed9780211ae245f7b, type: 3}
+  m_Name: Polosis_Front_Data
+  m_EditorClassIdentifier: 
+  dataName: Polosis_Front
+  dragonBonesJSON: {fileID: 4900000, guid: 4abc0e443b087694ea6aaf7b4017cbdf, type: 3}
+  textureAtlas:
+  - textureAtlasJSON: {fileID: 4900000, guid: 3b75c1cd0c5177c4ab36114d7faab587, type: 3}
+    texture: {fileID: 2800000, guid: 16c57ec72ec7f7341b70daea5d6fd40f, type: 3}
+    material: {fileID: 2100000, guid: 3bb816fffcb14c84cae1bcf40c99070f, type: 2}
+    uiMaterial: {fileID: 0}

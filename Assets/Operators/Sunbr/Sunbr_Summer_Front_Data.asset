@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a64e5b0e436d4bed9780211ae245f7b, type: 3}
+  m_Name: Sunbr_Summer_Front_Data
+  m_EditorClassIdentifier: 
+  dataName: Sunbr_Summer_Front
+  dragonBonesJSON: {fileID: 4900000, guid: 94fdd5d0ec4ac104199aa003b90a9c95, type: 3}
+  textureAtlas:
+  - textureAtlasJSON: {fileID: 4900000, guid: 466b3705043afd045b78916b03883219, type: 3}
+    texture: {fileID: 2800000, guid: c646c4aa0e8b69149974cbcd0ff67e63, type: 3}
+    material: {fileID: 2100000, guid: 9cc9f587979a8c74eb796c1d152a4530, type: 2}
+    uiMaterial: {fileID: 0}
