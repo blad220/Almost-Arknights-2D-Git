@@ -32,7 +32,7 @@ public class OperatorController : MonoBehaviour
         if (_operatorObject.TryGetComponent( out DragonBones.UnityArmatureComponent component))
         {
             operatorObject = component;
-            StartOperator();
+            //StartOperator();
         }
         //operatorObject = _operatorObject.GetComponent<DragonBones.UnityArmatureComponent>();
         
@@ -113,12 +113,13 @@ public class OperatorController : MonoBehaviour
         _armatureComponent.sortingLayerName = _armatureComponent.sortingLayerName;
         _armatureComponent.sortingOrder = _armatureComponent.sortingOrder;
     }
-    void StartOperator()
+    public void StartOperator(SetupDirection direction)
     {
         //transform.position;
+        setupDirection = direction;
         string lastAnimation = operatorObject._armature.animation.lastAnimationName;
         DragonBones.AnimationState lastAnimationState = operatorObject._armature.animation.lastAnimationState;
-        if (setupDirection == SetupDirection.Bottom)
+        if (direction == SetupDirection.Bottom)
         {
             operatorObject.armature.flipX = false;
 
@@ -126,7 +127,7 @@ public class OperatorController : MonoBehaviour
 
 
         }
-        if (setupDirection == SetupDirection.Top)
+        if (direction == SetupDirection.Top)
         {
             //Transform transformOperator = operatorObject.transform;
             //operatorObject.armature.Dispose();
@@ -142,24 +143,24 @@ public class OperatorController : MonoBehaviour
             operatorObject.DBUpdate();
             _underlayObject.transform.localEulerAngles = new Vector3(_underlayObject.transform.localEulerAngles.x, 90f, _underlayObject.transform.localEulerAngles.z);
         }
-        if (setupDirection == SetupDirection.Left)
+        if (direction == SetupDirection.Left)
         {
             operatorObject.armature.flipX = true;
 
             _underlayObject.transform.localEulerAngles = new Vector3(_underlayObject.transform.localEulerAngles.x, 0f, _underlayObject.transform.localEulerAngles.z);
 
         }
-        if (setupDirection == SetupDirection.Right)
+        if (direction == SetupDirection.Right)
         {
             operatorObject.armature.flipX = false;
 
             _underlayObject.transform.localEulerAngles = new Vector3(_underlayObject.transform.localEulerAngles.x, 180f, _underlayObject.transform.localEulerAngles.z);
 
         }
-        if (!string.IsNullOrEmpty(operatorObject.animationName))
-        {
+        //if (!string.IsNullOrEmpty(operatorObject.animationName))
+        //{
             StartCoroutine(AnimationStartOperator());
-        }
+        //}
     }
     IEnumerator AnimationStartOperator()
     {

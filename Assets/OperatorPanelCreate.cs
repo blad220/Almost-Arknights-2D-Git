@@ -17,6 +17,11 @@ public class OperatorPanelCreate : MonoBehaviour
     public RuntimeAnimatorController _AnimatorController;
 
     public Color colorPanelBefore = new Color();
+    void Awake()
+    {
+        OperatorPanelCreate link = MainController.mainInterfaceFields.operatorPanelCreate;
+        if(link == null) MainController.mainInterfaceFields.operatorPanelCreate = gameObject.GetComponent<OperatorPanelCreate>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -100,17 +105,21 @@ public class OperatorPanelCreate : MonoBehaviour
             operatorController._operatorData.skills[(int)operatorController._operatorData.activeSkill].cost
             );
 
+        OperatorUI.AddComponent<CapsuleCollider>();
+
         Operators.Add(OperatorUI);
 
         OperatorUI.transform.position = new Vector3(9999f, 9999f, 9999f);
 
         return OperatorUI;
     }
-    public void checkDPCost()
+    public void checkDPCostAndUnitLimit()
     {
         foreach (GameObject operatopPanel in OperatorsPanel)
         {
-            if(operatopPanel.GetComponent<uiSelectAvatar>().operatorObject.GetComponent<OperatorController>()._operatorData.DpCost <= MainController._DPcount)
+            GameObject operatorObject = operatopPanel.GetComponent<uiSelectAvatar>().operatorObject;
+            OperatorController operatorData = operatorObject.GetComponent<OperatorController>();
+            if (operatorData._operatorData.DpCost <= MainController._DPcount && MainController.UnitLimit > 0 && !MainController.isDeployedOperator(operatorObject))
             {
                 operatopPanel.GetComponent<uiSelectAvatar>().isActive = true;
                 operatopPanel.GetComponent<Button>().interactable = true;

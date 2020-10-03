@@ -9,7 +9,16 @@ public class MainController: MonoBehaviour
     public static OperatorData[] operatorOnGame;
 
     public List<GameObject> _deployedOperatorOnGame = new List<GameObject>();
-    public static List<GameObject> deployedOperatorOnGame = new List<GameObject>();
+
+    [System.Serializable]
+    public class  DeployedOperatorOnGame
+    {
+        public GameObject operatorObject;
+        public TileDescription operatorPlaceCube;
+    }
+    //public static List<DeployedOperatorOnGame> deployedOperatorOnGame = new List<DeployedOperatorOnGame>();
+
+    public static List<KeyValuePair<TileDescription, GameObject>> deployedOperatorOnGame = new List<KeyValuePair<TileDescription, GameObject>>();
 
     private GameObject _mainObject;
     public static GameObject mainObject;
@@ -18,7 +27,7 @@ public class MainController: MonoBehaviour
     public static GameObject OperatorInterfaseObject;
 
     public static int startDP = 0;
-    public static UISelectOperatorUI selectOperatorUI;
+    
     public static UIMainInterfaceFieldsUI mainInterfaceFields;
 
     public static int _DPcount;
@@ -58,7 +67,7 @@ public class MainController: MonoBehaviour
             {
                 _DPcount++;
 
-                mainInterfaceFields.operatorPanelCreate.checkDPCost();
+                mainInterfaceFields.operatorPanelCreate.checkDPCostAndUnitLimit();
 
                 mainInterfaceFields.DPField.text = _DPcount.ToString();
 
@@ -77,7 +86,8 @@ public class MainController: MonoBehaviour
     }
     public static void decreaseDP(int dp)
     {
-        _DPcount =- dp;
+        _DPcount -= dp;
+        //Debug.Log($"{_DPcount} - {dp} = {_DPcount-dp}");
         mainInterfaceFields.DPField.text = _DPcount.ToString();
     }
     public static void decreaseUnitLimit(int limit)
@@ -151,31 +161,52 @@ public class MainController: MonoBehaviour
     {
         return operatorOnGame;
     }
-    public static void DeployOperator(GameObject operatorObject)
+    public static void DeployOperator(GameObject operatorObject, TileDescription targetCube)
     {
         if (!isDeployedOperator(operatorObject))
         {
-            deployedOperatorOnGame.Add(operatorObject);
-            //UnitLimit - deployedOperatorOnGame.Count;
-            //UnitCost;
-            //if(UnitLimit<=0) set all avatar Disabled
+            DeployedOperatorOnGame newDeploy = new DeployedOperatorOnGame();
+            newDeploy.operatorObject = operatorObject;
+            newDeploy.operatorPlaceCube = targetCube;
+
+            deployedOperatorOnGame.Add(new KeyValuePair<TileDescription, GameObject>(targetCube, operatorObject));
+
             decreaseDP(operatorObject.GetComponent<OperatorController>()._operatorData.DpCost);
             decreaseUnitLimit(1);
-            mainInterfaceFields.operatorPanelCreate.checkDPCost();
-            //Debug.Log(deployedOperatorOnGame.Count);
+
+            targetCube.typeTile = TileDescription.TypeTile.NoneStandableTyle;
+
+            mainInterfaceFields.operatorPanelCreate.checkDPCostAndUnitLimit();
+
         }
+
     }
-    public static int getDeployedOperatorIndex(GameObject operatorObject)
-    {
-        return deployedOperatorOnGame.IndexOf(operatorObject);
-    }
+    //public static int getDeployedOperatorIndex(GameObject operatorObject)
+    //{
+    //    return deployedOperatorOnGame.IndexOf(operatorObject);
+    //}
     public static bool isDeployedOperator(GameObject operatorObject)
     {
-        return deployedOperatorOnGame.Contains(operatorObject);
+
+        foreach (KeyValuePair<TileDescription, GameObject> deployedOperator in deployedOperatorOnGame)
+        {
+            if (GameObject.ReferenceEquals(deployedOperator.Value, operatorObject)) return true;
+        }
+        return false;
+        //return !deployedOperatorOnGame.Contains(operatorObject);
     }
-    public static void removeDeployedOperator(GameObject operatorObject)
+    public static bool removeDeployedOperator(GameObject operatorObject)
     {
-        deployedOperatorOnGame.Remove(operatorObject);
+        foreach (KeyValuePair<TileDescription, GameObject> deployedOperator in deployedOperatorOnGame)
+        {
+            if (deployedOperator.Value == operatorObject)
+            {
+                deployedOperatorOnGame.Remove(deployedOperator);
+                return true;
+            }
+        }
+        return false;
+        //deployedOperatorOnGame.Remove(operatorObject);
         //UnitLimit - deployedOperatorOnGame.Count;
 
         //if(UnitLimit>0) set all avatar Enabled

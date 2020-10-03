@@ -87,10 +87,12 @@ public class uiSelectAvatar : MonoBehaviour, IPointerDownHandler, IPointerClickH
             }
         }
     }
+    private TileDescription targetCube;
     void onFieldPosition(TileDescription cube)
     {
         operatorObject.transform.position = cube.standByPosition.position;
         isCanPlace = true;
+        targetCube = cube;
     }
     void noOnFieldPosition()
     {
@@ -107,12 +109,19 @@ public class uiSelectAvatar : MonoBehaviour, IPointerDownHandler, IPointerClickH
             MainController.mainObject.GetComponent<LevelControllScript>().showLowGround = false;
             MainController.mainObject.GetComponent<LevelControllScript>().showHighGround = false;
 
-            if (isCanPlace) MainController.DeployOperator(operatorObject);
+            if (isCanPlace)
+            {
+                //MainController.mainInterfaceFields.selectRotateUI.gameObject.SetActive(true);
+                MainController.mainInterfaceFields.selectRotateUI.placeSelectRotate(operatorObject, targetCube, true);
+
+                MainController.mainInterfaceFields.selectRotateUI.setPosition(targetCube.gameObject);
+                //MainController.DeployOperator(operatorObject, targetCube);
+            }
             //Debug.Log("" + MainController.isDeployedOperator(operatorObject));
             //Debug.Log("" + MainController.getDeployedOperatorIndex(operatorObject));
             Time.timeScale = timeScaleBefore;
 
-            Debug.Log("Drag Ended");
+            //Debug.Log("Drag Ended");
         }
     }
 

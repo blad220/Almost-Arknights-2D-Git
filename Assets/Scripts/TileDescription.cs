@@ -8,11 +8,13 @@ public class TileDescription : MonoBehaviour
     public enum TypeTile { HighStandableTyle, LowStandableTyle, NoneStandableTyle, FireTyle }
     public TypeTile typeTile;
 
+    private TypeTile typeTileOnStartGame;
+
     public Transform standByPosition;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        typeTileOnStartGame = typeTile;
     }
 
     // Update is called once per frame
