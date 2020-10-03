@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e927a0ef1b72e5647973610bb28cb86c, type: 3}
+  m_Name: Swllow_Data
+  m_EditorClassIdentifier: 
+  Name: Grey Throat
+  prefabOfOperator: {fileID: 778595539748935944, guid: 7d544edde77181a438db0ad8aada927b,
+    type: 3}
+  Elite: 1
+  Level: 50
+  OperatorType: 3
+  artBig_Ellite0: {fileID: 21300000, guid: c2050c8b46ac480469540b0429a058f7, type: 3}
+  artBig_Ellite2: {fileID: 21300000, guid: d9560714206247c4196401c234fb2fdd, type: 3}
+  artSmall: {fileID: 21300000, guid: 99dcdad6cf71b3647aa9a5de70f04f7e, type: 3}
+  curHP: 1146
+  maxHP: 1146
+  Attack: 382
+  Defense: 117
+  RES: 0
+  RedeployTyme: 70
+  DpCost: 13
+  Block: 1
+  ASPD: 1
+  Range: 0
+  isLowGrounded: 0
+  isHighGrounded: 1
+  CurrentEXP: 0
+  NextLevelEXP: 100
+  activeSkill: 1
+  skills:
+  - name: Soaring Feather
+    skillImage: {fileID: 21300000, guid: 8f3f28d5b4479ed4ba22ff711842ac80, type: 3}
+    description: The next attack hits 2 times, with each hit dealing 115% physical
+      damage. Can hold 1 charges
+    cost: 5
+    initCost: 0
+    duration: 0
+  - name: Reflow
+    skillImage: {fileID: 21300000, guid: 6283b7ab9d0d8f84ab11cbadc50d03af, type: 3}
+    description: Attack +15%, attacks deal 3 hits
+    cost: 36
+    initCost: 11
+    duration: 16

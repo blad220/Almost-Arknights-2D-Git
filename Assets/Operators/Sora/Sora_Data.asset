@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e927a0ef1b72e5647973610bb28cb86c, type: 3}
+  m_Name: Sora_Data
+  m_EditorClassIdentifier: 
+  Name: Sora
+  prefabOfOperator: {fileID: 2231243581315210416, guid: 933e3f2dde92b32488436be88861c596,
+    type: 3}
+  Elite: 1
+  Level: 50
+  OperatorType: 5
+  artBig_Ellite0: {fileID: 21300000, guid: fdba2c83ab16d6b4c888224426c11c5d, type: 3}
+  artBig_Ellite2: {fileID: 21300000, guid: d9bf7f11fa6928b488f3031c85c8ca69, type: 3}
+  artSmall: {fileID: 21300000, guid: f9b9a35b6e0b3a142b6d62b68cd60389, type: 3}
+  curHP: 937
+  maxHP: 937
+  Attack: 258
+  Defense: 176
+  RES: 0
+  RedeployTyme: 70
+  DpCost: 7
+  Block: 1
+  ASPD: 1
+  Range: 0
+  isLowGrounded: 0
+  isHighGrounded: 1
+  CurrentEXP: 0
+  NextLevelEXP: 100
+  activeSkill: 1
+  skills:
+  - name: Song of Slumber
+    skillImage: {fileID: 21300000, guid: eb78c85565cf41843bc82529335cde21, type: 3}
+    description: Increase attack range, all enemies within attack range enter slumber
+      status (invulnerable+cannot take action). Additionally, trait effect increases
+      to 60%
+    cost: 60
+    initCost: 35
+    duration: 7
+  - name: Song of Battle
+    skillImage: {fileID: 21300000, guid: 633e4139c60c7464b87131f658a52e70, type: 3}
+    description: All allies within attack range gain Attack equal to 80% of Sora's
+      Attack
+    cost: 45
+    initCost: 15
+    duration: 16

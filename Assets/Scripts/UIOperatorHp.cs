@@ -7,8 +7,11 @@ public class UIOperatorHp : MonoBehaviour
 {
     public Text textField;
     private Slider hpBar;
+    public Gradient gradient;
+    public Image fill;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         hpBar = gameObject.GetComponent<Slider>();
     }
@@ -17,5 +20,18 @@ public class UIOperatorHp : MonoBehaviour
     void Update()
     {
         if(textField != null) textField.text = $"{hpBar.value}/{hpBar.maxValue}";
+        fill.color = gradient.Evaluate(hpBar.normalizedValue);
+
+    }
+
+    public void SetMaxHP(int health)
+    {
+        hpBar.maxValue = health;
+        fill.color = gradient.Evaluate(1f);
+    }
+    public void SetHP(int health)
+    {
+        hpBar.value = health;
+        fill.color = gradient.Evaluate(hpBar.normalizedValue);
     }
 }

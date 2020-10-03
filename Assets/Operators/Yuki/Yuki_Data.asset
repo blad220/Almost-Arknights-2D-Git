@@ -9,13 +9,44 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a64e5b0e436d4bed9780211ae245f7b, type: 3}
+  m_Script: {fileID: 11500000, guid: e927a0ef1b72e5647973610bb28cb86c, type: 3}
   m_Name: Yuki_Data
   m_EditorClassIdentifier: 
-  dataName: Yuki
-  dragonBonesJSON: {fileID: 4900000, guid: a5cbeb785ca19234eb448d856f7a01e3, type: 3}
-  textureAtlas:
-  - textureAtlasJSON: {fileID: 4900000, guid: 942c43c024f0a5d4389792ae9d068201, type: 3}
-    texture: {fileID: 2800000, guid: e144547f9e9a6ad478a2a76bbb198bc0, type: 3}
-    material: {fileID: 2100000, guid: c36a8161223d80e42adf5aa0b7a8ab88, type: 2}
-    uiMaterial: {fileID: 0}
+  Name: Shira Yuki
+  prefabOfOperator: {fileID: 4885775223291380573, guid: cd41de0754f643f4fb7c865950225c67,
+    type: 3}
+  Elite: 2
+  Level: 50
+  OperatorType: 3
+  artBig_Ellite0: {fileID: 21300000, guid: 423203e6252a3624d933bc63dbc38591, type: 3}
+  artBig_Ellite2: {fileID: 21300000, guid: 4b2206d0cd1779a468181b1d80cddd52, type: 3}
+  artSmall: {fileID: 21300000, guid: c72bb88cac458dc47876f81fcd0b8f48, type: 3}
+  curHP: 1536
+  maxHP: 1536
+  Attack: 746
+  Defense: 95
+  RES: 0
+  RedeployTyme: 70
+  DpCost: 27
+  Block: 1
+  ASPD: 2.8
+  Range: 0
+  isLowGrounded: 0
+  isHighGrounded: 1
+  CurrentEXP: 0
+  NextLevelEXP: 100
+  activeSkill: 0
+  skills:
+  - name: Whirlwind
+    skillImage: {fileID: 21300000, guid: d0d733d091cdda04caa4920796d054d1, type: 3}
+    description: Increase attack range by 2 tiles
+    cost: 26
+    initCost: 5
+    duration: 25
+  - name: Condensed Weapon
+    skillImage: {fileID: 21300000, guid: 2428665e18d8a174fa5efd14af098487, type: 3}
+    description: Attack with spinning blades, inflicting -26% movement speed and
+      dealing 60% magical damage per second for a short duration
+    cost: 31
+    initCost: 0
+    duration: 25

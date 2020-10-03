@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e927a0ef1b72e5647973610bb28cb86c, type: 3}
+  m_Name: Vingna_Data
+  m_EditorClassIdentifier: 
+  Name: Vigna
+  prefabOfOperator: {fileID: 6312103778578861822, guid: 5748c3443ab55744e975e64552268526,
+    type: 3}
+  Elite: 2
+  Level: 50
+  OperatorType: 7
+  artBig_Ellite0: {fileID: 21300000, guid: 343fb45a3bc68d14b9a19f6bad52f338, type: 3}
+  artBig_Ellite2: {fileID: 21300000, guid: 6801cc750365f2940bb79b576b315ebd, type: 3}
+  artSmall: {fileID: 21300000, guid: dc77ebf68b132594cbfe87a69747b357, type: 3}
+  curHP: 1243
+  maxHP: 1243
+  Attack: 449
+  Defense: 275
+  RES: 0
+  RedeployTyme: 70
+  DpCost: 11
+  Block: 1
+  ASPD: 1
+  Range: 0
+  isLowGrounded: 1
+  isHighGrounded: 0
+  CurrentEXP: 0
+  NextLevelEXP: 100
+  activeSkill: 0
+  skills:
+  - name: "Attack Strengthening\xB7Type \u03B2"
+    skillImage: {fileID: 21300000, guid: d84d12eed6fb2b7409600be0ecbe0da0, type: 3}
+    description: Attack +40%
+    cost: 37
+    initCost: 0
+    duration: 25
+  - name: Hammer-on
+    skillImage: {fileID: 21300000, guid: e17fdfaf416f43d44839096c32816163, type: 3}
+    description: Slightly increase attack interval (+0.5 seconds), Attack +130%
+    cost: 32
+    initCost: 0
+    duration: 22

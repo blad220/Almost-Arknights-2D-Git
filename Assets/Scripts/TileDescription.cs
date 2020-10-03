@@ -6,8 +6,9 @@ public class TileDescription : MonoBehaviour
 {
     //Material material;
     public enum TypeTile { HighStandableTyle, LowStandableTyle, NoneStandableTyle, FireTyle }
-
     public TypeTile typeTile;
+
+    public Transform standByPosition;
     // Start is called before the first frame update
     void Start()
     {

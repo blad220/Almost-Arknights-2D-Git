@@ -6,7 +6,7 @@ using UnityEngine;
 public class OperatorData : ScriptableObject
 {
     public string Name;
-    
+    public GameObject prefabOfOperator;
     
     [Space(10)]
     public EliteEnum Elite;
@@ -32,10 +32,12 @@ public class OperatorData : ScriptableObject
     public int RedeployTyme;
     public int DpCost;
     public int Block;
-    public int ASPD;
+    public float ASPD;
 
     [Space(10)]
     public int Range;
+    public bool isLowGrounded;
+    public bool isHighGrounded;
 
     [Space(10)]
     public int CurrentEXP;

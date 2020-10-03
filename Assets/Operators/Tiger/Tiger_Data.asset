@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Tiger_Data
   m_EditorClassIdentifier: 
   Name: Tiger
+  prefabOfOperator: {fileID: 3529257746593351902, guid: a0c6ec0c81149ef4b920885cde16f91d,
+    type: 3}
   Elite: 1
   Level: 50
   OperatorType: 1
@@ -29,6 +31,8 @@ MonoBehaviour:
   Block: 1
   ASPD: 12
   Range: 0
+  isLowGrounded: 1
+  isHighGrounded: 0
   CurrentEXP: 1234
   NextLevelEXP: 2000
   activeSkill: 1

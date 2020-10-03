@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e927a0ef1b72e5647973610bb28cb86c, type: 3}
+  m_Name: Sunbr_Data
+  m_EditorClassIdentifier: 
+  Name: Sunbr
+  prefabOfOperator: {fileID: 9160046734626784849, guid: 54ca612b4ec274c4bbc82772c79cd380,
+    type: 3}
+  Elite: 1
+  Level: 50
+  OperatorType: 6
+  artBig_Ellite0: {fileID: 21300000, guid: 52fb55f4fafd2dc43b39494b37f8eeb4, type: 3}
+  artBig_Ellite2: {fileID: 21300000, guid: 4e5cdb461f552df409c0a8d9c1cc3b1c, type: 3}
+  artSmall: {fileID: 21300000, guid: 468fd384c48d8fc458936be40a8cd688, type: 3}
+  curHP: 1768
+  maxHP: 1768
+  Attack: 333
+  Defense: 441
+  RES: 10
+  RedeployTyme: 70
+  DpCost: 18
+  Block: 3
+  ASPD: 1.2
+  Range: 0
+  isLowGrounded: 1
+  isHighGrounded: 0
+  CurrentEXP: 0
+  NextLevelEXP: 100
+  activeSkill: 0
+  skills:
+  - name: Reserve Rations
+    skillImage: {fileID: 21300000, guid: 23c2ab6381c4f454a88fd3e047fd6782, type: 3}
+    description: "The next attack will heal a nearby ally for 120% of \u0413\u0423\u041C's
+      Attack. Can hold 1 charges"
+    cost: 6
+    initCost: 0
+    duration: 0
+  - name: Food Preparation
+    skillImage: {fileID: 21300000, guid: c2ee70151bdcffe4a9cf08cf59fb7de1, type: 3}
+    description: Begins cooking and stops attacking enemies for 10 seconds, Defense
+      +60%. After finishing cooking, focuses on healing nearby allies (attack interval
+      +130%), Attack +43%
+    cost: 36
+    initCost: 12
+    duration: 30

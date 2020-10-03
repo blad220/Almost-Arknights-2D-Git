@@ -31,10 +31,11 @@ public class LevelDisplay : MonoBehaviour
 
     }
     
+    public OperatorData[] operatorsInGame;
 
-    public Text description;
+    public string description;
 
-    public Text cost;
+    public int cost;
 
     public Image levelImage;
 
@@ -194,8 +195,15 @@ public class LevelDisplay : MonoBehaviour
                         cubeList.Add(cube);
                         cube.transform.SetParent(transform);
                         //cube.transform.position = new Vector3(k, mass[k][n], n);
-                        TileDescription tileDescription = cube.AddComponent<TileDescription>();
-                        
+                        TileDescription tileDescription;
+
+                        if (cube.TryGetComponent(out  tileDescription)) {
+
+                        }
+                        else
+                        {
+                            tileDescription = cube.AddComponent<TileDescription>();
+                        }
                         //Material tempMaterial = cube.GetComponent<MeshRenderer>().material;
                         float curElement = levelData.getMapDataElementbyIndex(k, n);
 

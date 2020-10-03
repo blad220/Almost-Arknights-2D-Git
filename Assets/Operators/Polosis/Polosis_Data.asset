@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e927a0ef1b72e5647973610bb28cb86c, type: 3}
+  m_Name: Polosis_Data
+  m_EditorClassIdentifier: 
+  Name: Polosis
+  prefabOfOperator: {fileID: 284530385444764818, guid: 3214f0f1cc807b6479349b6450fb87d6,
+    type: 3}
+  Elite: 1
+  Level: 50
+  OperatorType: 2
+  artBig_Ellite0: {fileID: 21300000, guid: 1018ab807390f234296e5d7ec4cc5238, type: 3}
+  artBig_Ellite2: {fileID: 21300000, guid: 2d7fdce4b4bb59c41b24bed848d1be1b, type: 3}
+  artSmall: {fileID: 21300000, guid: 768f9b9c4e94b7246b7bbbee555054e7, type: 3}
+  curHP: 1197
+  maxHP: 1197
+  Attack: 248
+  Defense: 116
+  RES: 0
+  RedeployTyme: 70
+  DpCost: 17
+  Block: 1
+  ASPD: 2.85
+  Range: 0
+  isLowGrounded: 0
+  isHighGrounded: 1
+  CurrentEXP: 0
+  NextLevelEXP: 100
+  activeSkill: 0
+  skills:
+  - name: "Healing Strengthening\xB7Type \u03B3"
+    skillImage: {fileID: 21300000, guid: bbc654585ab3af649b1032a3062c11b7, type: 3}
+    description: Attack +60%
+    cost: 35
+    initCost: 20
+    duration: 30
+  - name: Enkephalin
+    skillImage: {fileID: 21300000, guid: 36c5d6d211b020348a90d74412870886, type: 3}
+    description: Increase attack range, highly reduce attack interval (-1.8 seconds)
+    cost: 100
+    initCost: 70
+    duration: 34

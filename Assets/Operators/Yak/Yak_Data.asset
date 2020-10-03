@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e927a0ef1b72e5647973610bb28cb86c, type: 3}
+  m_Name: Yak_Data
+  m_EditorClassIdentifier: 
+  Name: Yak
+  prefabOfOperator: {fileID: 59855554693053642, guid: b652388496f1e9744b846005f8f3b95f,
+    type: 3}
+  Elite: 1
+  Level: 50
+  OperatorType: 6
+  artBig_Ellite0: {fileID: 21300000, guid: ea1a4fe26e1a7cd4bb3df031a6f74e1f, type: 3}
+  artBig_Ellite2: {fileID: 21300000, guid: 65afd20d21a1617479bddeb8b8c0811e, type: 3}
+  artSmall: {fileID: 21300000, guid: f03d8b95c695fef4796700b2d1693bd3, type: 3}
+  curHP: 2168
+  maxHP: 2168
+  Attack: 307
+  Defense: 467
+  RES: 5
+  RedeployTyme: 70
+  DpCost: 19
+  Block: 3
+  ASPD: 1.2
+  Range: 0
+  isLowGrounded: 1
+  isHighGrounded: 0
+  CurrentEXP: 0
+  NextLevelEXP: 100
+  activeSkill: 1
+  skills:
+  - name: Body Strengthening
+    skillImage: {fileID: 21300000, guid: 422ea326b457b4c449e9ae198da7e636, type: 3}
+    description: Max HP +33%, recover 25 HP every second
+    cost: 41
+    initCost: 5
+    duration: 27
+  - name: Cold Resistance
+    skillImage: {fileID: 21300000, guid: 731917e6c0752d44696a817e962b0693, type: 3}
+    description: Max HP +33%, Defense +10%, Magic resistance +63%
+    cost: 46
+    initCost: 0
+    duration: 27

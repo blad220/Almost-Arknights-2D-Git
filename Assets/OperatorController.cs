@@ -15,6 +15,9 @@ public class OperatorController : MonoBehaviour
     public GameObject _operatorObject;
     public GameObject _underlayObject;
 
+    public GameObject _operatorHP;
+    public GameObject _operatorSkill;
+
     public enum SetupDirection { Right, Left, Top, Bottom }
     public SetupDirection setupDirection;
 
@@ -54,6 +57,34 @@ public class OperatorController : MonoBehaviour
         }
         
     }
+    public void SetMaxHP(int hp)
+    {
+        _operatorHP.GetComponent<UIOperatorHp>().SetMaxHP(hp);
+    }
+    public void SetHP(int hp)
+    {
+        _operatorHP.GetComponent<UIOperatorHp>().SetHP(hp);
+    }
+    public void SetMaxSkillPoint(int maxSkillPoint)
+    {
+        _operatorSkill.GetComponent<UIOperatorSkill>().SetMaxSkillPoint(maxSkillPoint);
+    }
+    public void SetSkillPoint(int skillPoint)
+    {
+        _operatorSkill.GetComponent<UIOperatorSkill>().SetSkillPoint(skillPoint);
+    }
+
+    public void SetStartHP(int hp)
+    {
+        SetMaxHP(hp);
+        SetHP(hp);
+    }
+    public void SetStartSkillPoint(int skillPoint, int maxSkillPoint)
+    {
+        SetMaxSkillPoint(maxSkillPoint);
+        SetSkillPoint(skillPoint);
+    }
+
     public static void ChangeArmatureData(UnityArmatureComponent _armatureComponent, string armatureName, string dragonBonesName)
     {
         bool isUGUI = _armatureComponent.isUGUI;
