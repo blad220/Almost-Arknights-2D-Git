@@ -89,28 +89,28 @@ public class UISelectRotatePointerUI : MonoBehaviour,
         if (transform.localPosition.x > 40f && transform.localPosition.y < 40f && transform.localPosition.y > -40f)
         {
             selectRotateUI.getTarget().GetComponent<OperatorController>().StartOperator(OperatorController.SetupDirection.Right);
-            selectRotateUI.RotateSelectUI.SetActive(false);
+            selectRotateUI.SelectRotateOpen(false);
             MainController.DeployOperator(selectRotateUI.getTarget(), selectRotateUI.getCubeTile());
         }
 
         if (transform.localPosition.x < -40f && transform.localPosition.y < 40f && transform.localPosition.y > -40f)
         {
             selectRotateUI.getTarget().GetComponent<OperatorController>().StartOperator(OperatorController.SetupDirection.Left);
-            selectRotateUI.RotateSelectUI.SetActive(false);
+            selectRotateUI.SelectRotateOpen(false);
             MainController.DeployOperator(selectRotateUI.getTarget(), selectRotateUI.getCubeTile());
         }
 
         if (transform.localPosition.y > 40f && transform.localPosition.x < 40f && transform.localPosition.x > -40f)
         {
             selectRotateUI.getTarget().GetComponent<OperatorController>().StartOperator(OperatorController.SetupDirection.Top);
-            selectRotateUI.RotateSelectUI.SetActive(false);
+            selectRotateUI.SelectRotateOpen(false);
             MainController.DeployOperator(selectRotateUI.getTarget(), selectRotateUI.getCubeTile());
         }
 
         if (transform.localPosition.y < -40f && transform.localPosition.x < 40f && transform.localPosition.x > -40f)
         {
             selectRotateUI.getTarget().GetComponent<OperatorController>().StartOperator(OperatorController.SetupDirection.Bottom);
-            selectRotateUI.RotateSelectUI.SetActive(false);
+            selectRotateUI.SelectRotateOpen(false);
             MainController.DeployOperator(selectRotateUI.getTarget(), selectRotateUI.getCubeTile());
         }
 

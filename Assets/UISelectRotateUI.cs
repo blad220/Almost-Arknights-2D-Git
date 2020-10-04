@@ -20,6 +20,9 @@ public class UISelectRotateUI : MonoBehaviour
     {
         UISelectRotateUI link = MainController.mainInterfaceFields.selectRotateUI;
         if (link == null) MainController.mainInterfaceFields.selectRotateUI = gameObject.GetComponent<UISelectRotateUI>();
+
+        RotateSelectUI.SetActive(true);
+        SelectRotateOpen(false);
     }
     public void setPosition(GameObject CubeObject) {
 
@@ -37,10 +40,23 @@ public class UISelectRotateUI : MonoBehaviour
     }
     public void placeSelectRotate(GameObject operatorObject, TileDescription cube, bool isActive)
     {
-        RotateSelectUI.SetActive(isActive);
         target = operatorObject;
         cubeTile = cube;
+
+        SelectRotateOpen(isActive);
         //operatorObject.GetComponent<OperatorController>().setupDirection = OperatorController.SetupDirection.
+    }
+    public void SelectRotateOpen(bool isActive)
+    {
+        if(isActive)
+        {
+            setPosition(cubeTile.gameObject);
+        }
+        else
+        {
+            transform.position = new Vector3(9999f, 9999f, 9999f);
+        }
+        //RotateSelectUI.SetActive(isActive);
     }
 
 }

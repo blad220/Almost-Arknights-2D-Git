@@ -114,7 +114,7 @@ public class uiSelectAvatar : MonoBehaviour, IPointerDownHandler, IPointerClickH
                 //MainController.mainInterfaceFields.selectRotateUI.gameObject.SetActive(true);
                 MainController.mainInterfaceFields.selectRotateUI.placeSelectRotate(operatorObject, targetCube, true);
 
-                MainController.mainInterfaceFields.selectRotateUI.setPosition(targetCube.gameObject);
+                //MainController.mainInterfaceFields.selectRotateUI.setPosition(targetCube.gameObject);
                 //MainController.DeployOperator(operatorObject, targetCube);
             }
             //Debug.Log("" + MainController.isDeployedOperator(operatorObject));

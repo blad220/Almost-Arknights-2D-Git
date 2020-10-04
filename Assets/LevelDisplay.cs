@@ -58,7 +58,7 @@ public class LevelDisplay : MonoBehaviour
     public levelList[] levelLists;
 
     public List<GameObject> cubeList;
-
+    public GameObject cubes;
 
     // Start is called before the first frame update
     public void Start()
@@ -128,16 +128,18 @@ public class LevelDisplay : MonoBehaviour
             }
             if (setupMap == SetupMap.MoreCubes)
             {
-                foreach (GameObject cube in cubeList)
-                {
+//                foreach (GameObject cube in cubeList)
+//                {
 
-#if UNITY_EDITOR
-                    UnityEditor.EditorApplication.delayCall += () =>
-                    {
-                        DestroyImmediate(cube);
-                    };
-#endif
-                }
+//#if UNITY_EDITOR
+//                    UnityEditor.EditorApplication.delayCall += () =>
+//                    {
+//                        //DestroyImmediate(cube);
+//                        //DestroyImmediate(cubes);
+//                    };
+//#endif
+//                }
+                DestroyImmediate(cubes);
                 cubeList.Clear();
 
                 //for (int k = 0; k < mass.Length; k++)
@@ -176,6 +178,12 @@ public class LevelDisplay : MonoBehaviour
                 //        cube.transform.SetParent(transform);
                 //    }
                 //}
+
+                cubes = new GameObject("Cubes");
+                cubes.transform.SetParent(transform);
+                cubes.transform.localPosition = Vector3.zero;
+                cubes.transform.localScale = new Vector3(1f, 1f, 1f);
+
                 for (int k = 0; k < levelData.getMapDataCount(); k++)
                 {
                     for (int n = 0; n < levelData.getMapDataCount(k); n++)
@@ -192,8 +200,10 @@ public class LevelDisplay : MonoBehaviour
                             cube = GameObject.Instantiate(objectTile);
                             cubeMaterial = cube.GetComponent<MeshRenderer>().sharedMaterials;
                         }
+
                         cubeList.Add(cube);
-                        cube.transform.SetParent(transform);
+
+                        cube.transform.SetParent(cubes.transform);
                         //cube.transform.position = new Vector3(k, mass[k][n], n);
                         TileDescription tileDescription;
 
