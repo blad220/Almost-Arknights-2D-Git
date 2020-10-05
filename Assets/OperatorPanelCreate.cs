@@ -19,12 +19,13 @@ public class OperatorPanelCreate : MonoBehaviour
     public Color colorPanelBefore = new Color();
     void Awake()
     {
-        OperatorPanelCreate link = MainController.mainInterfaceFields.operatorPanelCreate;
-        if(link == null) MainController.mainInterfaceFields.operatorPanelCreate = gameObject.GetComponent<OperatorPanelCreate>();
+        
     }
     // Start is called before the first frame update
     void Start()
     {
+        OperatorPanelCreate link = MainController.mainInterfaceFields.operatorPanelCreate;
+        if (link == null) MainController.mainInterfaceFields.operatorPanelCreate = gameObject.GetComponent<OperatorPanelCreate>();
         //colorPanelBefore = GetComponent<Image>().color;
 
         ((RectTransform)gameObject.transform).anchorMin = new Vector2(1f, 0.5f);
