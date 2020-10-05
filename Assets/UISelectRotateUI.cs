@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class UISelectRotateUI : MonoBehaviour
@@ -16,28 +14,36 @@ public class UISelectRotateUI : MonoBehaviour
 
     public GameObject target;
     public TileDescription cubeTile;
-    void Start()
+
+    private void Start()
     {
         UISelectRotateUI link = MainController.mainInterfaceFields.selectRotateUI;
-        if (link == null) MainController.mainInterfaceFields.selectRotateUI = gameObject.GetComponent<UISelectRotateUI>();
+        if (link == null)
+        {
+            MainController.mainInterfaceFields.selectRotateUI = gameObject.GetComponent<UISelectRotateUI>();
+        }
 
         RotateSelectUI.SetActive(true);
         SelectRotateOpen(false);
     }
-    public void setPosition(GameObject CubeObject) {
 
+    public void setPosition(GameObject CubeObject)
+    {
         Vector3 pos = Camera.main.WorldToScreenPoint(CubeObject.GetComponent<TileDescription>().standByPosition.position);
 
         transform.position = pos;
     }
+
     public GameObject getTarget()
     {
         return target;
     }
+
     public TileDescription getCubeTile()
     {
         return cubeTile;
     }
+
     public void placeSelectRotate(GameObject operatorObject, TileDescription cube, bool isActive)
     {
         target = operatorObject;
@@ -46,9 +52,10 @@ public class UISelectRotateUI : MonoBehaviour
         SelectRotateOpen(isActive);
         //operatorObject.GetComponent<OperatorController>().setupDirection = OperatorController.SetupDirection.
     }
+
     public void SelectRotateOpen(bool isActive)
     {
-        if(isActive)
+        if (isActive)
         {
             setPosition(cubeTile.gameObject);
         }
@@ -58,5 +65,4 @@ public class UISelectRotateUI : MonoBehaviour
         }
         //RotateSelectUI.SetActive(isActive);
     }
-
 }

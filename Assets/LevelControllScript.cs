@@ -13,17 +13,22 @@ public class LevelControllScript : MonoBehaviour
     public ArrayList beforeColorLow = new ArrayList();
     public List<GameObject> changeGameobjectHigh = new List<GameObject>();
     public ArrayList beforeColorHigh = new ArrayList();
+
+    //неиспользуемая функция
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
     }
+
+    //Ниже кусок закомментированого кода тоже нужно удалить
 
     // Update is called once per frame
     //void Update()
     //{
-        
     //}
+
+    // очень много кода в Update
     private void Update()
     {
         if (showLowGround)
@@ -78,6 +83,7 @@ public class LevelControllScript : MonoBehaviour
             beforeColorHigh.Clear();
         }
 
+        //такие куски закомментированого кода нужно удалять. Через гит можно всегда восстановить нужную версию скрипта, если нужно. А так это портит чистоту кода
 
         //changeGameobject = new List<GameObject>();
         //beforeColor = new ArrayList();
@@ -104,10 +110,9 @@ public class LevelControllScript : MonoBehaviour
         //            n++;
         //        }
         //    }
-            
-        //} else 
-        //if(showLowGround && showHighGround) {
 
+        //} else
+        //if(showLowGround && showHighGround) {
         //}
         //else
         //{
@@ -120,6 +125,5 @@ public class LevelControllScript : MonoBehaviour
         //    beforeColor.Clear();
         //    //beforeColor = new Color[0];
         //}
-        
     }
 }

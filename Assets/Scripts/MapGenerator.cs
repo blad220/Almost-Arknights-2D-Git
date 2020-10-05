@@ -12,12 +12,12 @@ public class MapGenerator : MonoBehaviour
 
     public Material[] levelMaterial = new Material[9];
 
-    Mesh mesh;
+    private Mesh mesh;
     public Vector3[] vertices;
     public int[] triangles;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         mesh = new Mesh();
 
@@ -32,7 +32,7 @@ public class MapGenerator : MonoBehaviour
         mass[1] = new float[col] { -4, 3, 2, 2, 2, 1, 0, 1, 1, 2, 2, -4, -4 };
         mass[2] = new float[col] { -4, -4, 2, 2, 1, 1, 0, 1, 1, 2, 2, -4, -4 };
         mass[3] = new float[col] { -4, -4, 0, 0, 0, 0, 0, 0, 0, 0, 0, -4, -4 };
-        mass[4] = new float[col] { -4, -4, 3, 2, 2, 1, 1, 0, 1, 1, 2, 3, 3};
+        mass[4] = new float[col] { -4, -4, 3, 2, 2, 1, 1, 0, 1, 1, 2, 3, 3 };
         mass[5] = new float[col] { 4, 4, 2, 2, 2, 1, 1, 0, 1, 2, 2, 3, 3 };
         mass[6] = new float[col] { 4, 4, 2, 2, 2, 2, 2, 0, 2, 2, 2, 3, 3 };
 
@@ -47,9 +47,9 @@ public class MapGenerator : MonoBehaviour
             }
 
             UpdateMesh();
-
         }
-        if (setupMap == SetupMap.MoreCubes) {
+        if (setupMap == SetupMap.MoreCubes)
+        {
             for (int k = 0; k < mass.Length; k++)
             {
                 for (int n = 0; n < mass[k].Length; n++)
@@ -57,14 +57,15 @@ public class MapGenerator : MonoBehaviour
                     GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
                     //cube.transform.position = new Vector3(k, mass[k][n], n);
 
-                    if (mass[k][n] <= 1) {
+                    if (mass[k][n] <= 1)
+                    {
                         cube.transform.position = new Vector3(k, mass[k][n] - ((mass[k][n] + 5) / 2), n);
                         cube.transform.localScale = new Vector3(1, mass[k][n] + 5, 1);
                     }
                     else
                     {
                         cube.transform.position = new Vector3(k, -2f, n);
-                        cube.transform.localScale = new Vector3(1, 6f + mass[k][n]/10, 1);
+                        cube.transform.localScale = new Vector3(1, 6f + mass[k][n] / 10, 1);
                     }
                     cube.GetComponent<MeshRenderer>().material = levelMaterial[(int)mass[k][n] + 4];
 
@@ -72,18 +73,18 @@ public class MapGenerator : MonoBehaviour
                 }
             }
         }
-
     }
+
     //void CreateShape()
     //{
-        //float verticalsSize = 1f;
-        //vertices = new Vector3[]
-        //{
-        //    new Vector3(0,0,0),
-        //    new Vector3(0,verticalsSize,0),
-        //    new Vector3(verticalsSize,0,0),
-        //    new Vector3(verticalsSize,verticalsSize,0),
-        //};
+    //float verticalsSize = 1f;
+    //vertices = new Vector3[]
+    //{
+    //    new Vector3(0,0,0),
+    //    new Vector3(0,verticalsSize,0),
+    //    new Vector3(verticalsSize,0,0),
+    //    new Vector3(verticalsSize,verticalsSize,0),
+    //};
 
     //    triangles = new int[]
     //    {
@@ -91,18 +92,18 @@ public class MapGenerator : MonoBehaviour
     //        1, 3, 2,
     //    };
     //}
-    struct Tile
+    private struct Tile
     {
-        
     }
-    struct MeshShape
+
+    private struct MeshShape
     {
         public Vector3[] vertices;
         public int[] triangles;
     }
-    void AddToMesh(MeshShape addMesh)
+
+    private void AddToMesh(MeshShape addMesh)
     {
-        
         for (int i = 0; i < addMesh.triangles.Length; i++)
         {
             addMesh.triangles[i] += vertices.Length;
@@ -123,14 +124,15 @@ public class MapGenerator : MonoBehaviour
         //    addTrianglesN++;
         //}
     }
-    MeshShape CreateCube(float x, float y, float size, float height)
+
+    private MeshShape CreateCube(float x, float y, float size, float height)
     {
         float x1 = x - (size * 0.5f);
         float x2 = x + (size * 0.5f);
         float y1 = y - (size * 0.5f);
         float y2 = y + (size * 0.5f);
 
-        Vector3[] verticesCube = new Vector3[] 
+        Vector3[] verticesCube = new Vector3[]
         {
             //Top vertices
             new Vector3(x1, height, y1),
@@ -143,8 +145,6 @@ public class MapGenerator : MonoBehaviour
             new Vector3(x1, 0, y2),
             new Vector3(x2, 0, y1),
             new Vector3(x2, 0, y2),
-
-
         };
 
         int[] trianglesCube = new int[]
@@ -171,22 +171,25 @@ public class MapGenerator : MonoBehaviour
 
         return meshCube;
     }
-    void UpdateMesh()
+
+    private void UpdateMesh()
     {
         mesh.Clear();
         mesh.vertices = vertices;
         mesh.triangles = triangles;
         mesh.RecalculateNormals();
     }
-    void UpdateMesh(MeshShape meshShape)
+
+    private void UpdateMesh(MeshShape meshShape)
     {
         mesh.Clear();
         mesh.vertices = meshShape.vertices;
         mesh.triangles = meshShape.triangles;
         mesh.RecalculateNormals();
     }
+
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         //Debug.Log(setupMap);
     }

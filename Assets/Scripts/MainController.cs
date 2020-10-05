@@ -1,9 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+
 //using UnityEngine.UI;
 
-public class MainController: MonoBehaviour
+public class MainController : MonoBehaviour
 {
     public OperatorData[] _operatorOnGame;
     public static OperatorData[] operatorOnGame;
@@ -11,11 +11,12 @@ public class MainController: MonoBehaviour
     public List<GameObject> _deployedOperatorOnGame = new List<GameObject>();
 
     [System.Serializable]
-    public class  DeployedOperatorOnGame
+    public class DeployedOperatorOnGame
     {
         public GameObject operatorObject;
         public TileDescription operatorPlaceCube;
     }
+
     //public static List<DeployedOperatorOnGame> deployedOperatorOnGame = new List<DeployedOperatorOnGame>();
 
     public static List<KeyValuePair<TileDescription, GameObject>> deployedOperatorOnGame = new List<KeyValuePair<TileDescription, GameObject>>();
@@ -27,14 +28,14 @@ public class MainController: MonoBehaviour
     public static GameObject OperatorInterfaseObject;
 
     public static int startDP = 0;
-    
+
     public static UIMainInterfaceFieldsUI mainInterfaceFields;
 
     public static int _DPcount;
     private float timerDPSlider = 0.0f;
     public static int UnitLimit = 6;
 
-    void Awake()
+    private void Awake()
     {
         operatorOnGame = _operatorOnGame;
 
@@ -43,8 +44,10 @@ public class MainController: MonoBehaviour
 
         OperatorInterfaseObject = _OperatorInterfaseObject;
     }
-    void Start()
+
+    private void Start()
     {
+        //"магические числа" переменные у которых в коде объявлены значения внутри функции
         mainInterfaceFields.DPSlider.minValue = 0f;
         mainInterfaceFields.DPSlider.maxValue = 1f;
 
@@ -56,9 +59,10 @@ public class MainController: MonoBehaviour
         //StartCoroutine(startDPgeneration(1f));
         //StartCoroutine(startDPgenerationSlider());
     }
-    
-    void Update()
+
+    private void Update()
     {
+        //снова "магические числа"
         if (_DPcount < 99)
         {
             timerDPSlider += Time.deltaTime;
@@ -72,11 +76,12 @@ public class MainController: MonoBehaviour
                 mainInterfaceFields.DPField.text = _DPcount.ToString();
 
                 timerDPSlider = timerDPSlider % 1;
-
             }
             mainInterfaceFields.DPSlider.value = timerDPSlider;
         }
-        else {
+        else
+        {
+            //странная конструкция,
             if (timerDPSlider != 0.0f)
             {
                 timerDPSlider = 0.0f;
@@ -84,23 +89,25 @@ public class MainController: MonoBehaviour
             }
         }
     }
+
     public static void decreaseDP(int dp)
     {
         _DPcount -= dp;
         //Debug.Log($"{_DPcount} - {dp} = {_DPcount-dp}");
         mainInterfaceFields.DPField.text = _DPcount.ToString();
     }
+
     public static void decreaseUnitLimit(int limit)
     {
         UnitLimit -= limit;
         mainInterfaceFields.UnitLimitField.text = UnitLimit.ToString();
     }
+
     //IEnumerator startDPgenerationSlider()
     //{
     //    _DPslider = 0f;
     //    while (true)
     //    {
-
     //        Debug.Log("Started Coroutine at timestamp : " + Time.deltaTime);
     //        //Debug.Log("Started Coroutine at timestamp : " + Time.time % 1);
     //        //if (_DPslider >= 1f) {
@@ -110,8 +117,6 @@ public class MainController: MonoBehaviour
     //        //    mainInterfaceFields.DPSlider.value = 0f;
     //        //}
     //        //mainInterfaceFields.DPSlider.value = _DPslider;
-
-
 
     //        //if (_DPcount < 99)
     //        //{
@@ -139,7 +144,6 @@ public class MainController: MonoBehaviour
     //{
     //    _DPcount = 0;
     //    while (_DPcount <= 99) {
-
     //        //StopCoroutine("startDPgenerationSlider");
     //        //StartCoroutine(startDPgenerationSlider());
 
@@ -161,13 +165,16 @@ public class MainController: MonoBehaviour
     {
         return operatorOnGame;
     }
+
     public static void DeployOperator(GameObject operatorObject, TileDescription targetCube)
     {
         if (!isDeployedOperator(operatorObject))
         {
-            DeployedOperatorOnGame newDeploy = new DeployedOperatorOnGame();
-            newDeploy.operatorObject = operatorObject;
-            newDeploy.operatorPlaceCube = targetCube;
+            DeployedOperatorOnGame newDeploy = new DeployedOperatorOnGame
+            {
+                operatorObject = operatorObject,
+                operatorPlaceCube = targetCube
+            };
 
             deployedOperatorOnGame.Add(new KeyValuePair<TileDescription, GameObject>(targetCube, operatorObject));
 
@@ -177,24 +184,26 @@ public class MainController: MonoBehaviour
             targetCube.typeTile = TileDescription.TypeTile.NoneStandableTyle;
 
             mainInterfaceFields.operatorPanelCreate.checkDPCostAndUnitLimit();
-
         }
-
     }
+
     //public static int getDeployedOperatorIndex(GameObject operatorObject)
     //{
     //    return deployedOperatorOnGame.IndexOf(operatorObject);
     //}
     public static bool isDeployedOperator(GameObject operatorObject)
     {
-
         foreach (KeyValuePair<TileDescription, GameObject> deployedOperator in deployedOperatorOnGame)
         {
-            if (GameObject.ReferenceEquals(deployedOperator.Value, operatorObject)) return true;
+            if (GameObject.ReferenceEquals(deployedOperator.Value, operatorObject))
+            {
+                return true;
+            }
         }
         return false;
         //return !deployedOperatorOnGame.Contains(operatorObject);
     }
+
     public static bool removeDeployedOperator(GameObject operatorObject)
     {
         foreach (KeyValuePair<TileDescription, GameObject> deployedOperator in deployedOperatorOnGame)
@@ -211,6 +220,7 @@ public class MainController: MonoBehaviour
 
         //if(UnitLimit>0) set all avatar Enabled
     }
+
     //void addDP {DP++; Text; //for if(AvatarUnitCost<UnitCost) set AvatarUnitCost avatar Disabled}
     //void delDP {DP--; Text; //for if(AvatarUnitCost<UnitCost) set AvatarUnitCost avatar Disabled}
     //void changeSpeedDP {stopCor; start}

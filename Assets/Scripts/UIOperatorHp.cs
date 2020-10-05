@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class UIOperatorHp : MonoBehaviour
@@ -10,18 +8,20 @@ public class UIOperatorHp : MonoBehaviour
     public Gradient gradient;
     public Image fill;
 
-    // Start is called before the first frame update
-    void Awake()
+    private void Awake()
     {
         hpBar = gameObject.GetComponent<Slider>();
     }
 
-    // Update is called once per frame
-    void Update()
+    //обновление значений в апдейте плохая идея. Лучше сделать это через свойства или callback
+    private void Update()
     {
-        if(textField != null) textField.text = $"{hpBar.value}/{hpBar.maxValue}";
-        fill.color = gradient.Evaluate(hpBar.normalizedValue);
+        if (textField != null)
+        {
+            textField.text = $"{hpBar.value}/{hpBar.maxValue}";
+        }
 
+        fill.color = gradient.Evaluate(hpBar.normalizedValue);
     }
 
     public void SetMaxHP(int health)
@@ -29,6 +29,7 @@ public class UIOperatorHp : MonoBehaviour
         hpBar.maxValue = health;
         fill.color = gradient.Evaluate(1f);
     }
+
     public void SetHP(int health)
     {
         hpBar.value = health;

@@ -1,28 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class UIOperatorSkill : MonoBehaviour
 {
+    public Image fill;
+    public Gradient gradient;
     public Text textField;
     private Slider skillBar;
-    public Gradient gradient;
-    public Image fill;
-
-    // Start is called before the first frame update
-    void Awake()
-    {
-        skillBar = gameObject.GetComponent<Slider>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (textField != null) textField.text = $"{skillBar.value}/{skillBar.maxValue}";
-        fill.color = gradient.Evaluate(skillBar.normalizedValue);
-
-    }
 
     public void SetMaxSkillPoint(int skillPoint)
     {
@@ -30,10 +14,24 @@ public class UIOperatorSkill : MonoBehaviour
 
         fill.color = gradient.Evaluate(1f);
     }
+
     public void SetSkillPoint(int skillPoint)
     {
         skillBar.value = skillPoint;
         fill.color = gradient.Evaluate(skillBar.normalizedValue);
     }
 
+    private void Awake()
+    {
+        skillBar = gameObject.GetComponent<Slider>();
+    }
+
+    private void Update()
+    {
+        if (textField != null)
+        {
+            textField.text = $"{skillBar.value}/{skillBar.maxValue}";
+        }
+        fill.color = gradient.Evaluate(skillBar.normalizedValue);
+    }
 }

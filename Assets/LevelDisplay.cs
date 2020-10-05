@@ -1,23 +1,34 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
+//добавить namespace
 [RequireComponent(typeof(MeshFilter))]
 public class LevelDisplay : MonoBehaviour
 {
     [Header("Main settings")]
+    //тут нужно выбрать что-то одно, а то ты сериализуешь и по значению и по ссылке
     [SerializeField, SerializeReference]
     public LevelCreateData levelData;
 
+    //енумы пишутся в строчку
+    //типо так
+    //public enum SetupMap
+    //{
+    //    OneMesh,
+    //    MoreCubes
+    //}
     public enum SetupMap { OneMesh, MoreCubes }
+
     public SetupMap setupMap;
 
     public GameObject objectTile;
 
     public levelMaterialClass levelMaterial = new levelMaterialClass();
+
+    //объявление класса внутри другого класса
     [System.Serializable]
     public class levelMaterialClass
     {
@@ -27,10 +38,8 @@ public class LevelDisplay : MonoBehaviour
         public Material[] groundTileNoStandable;
         public Material[] highTile;
         public Material[] highTileNoStandable;
-
-
     }
-    
+
     public OperatorData[] operatorsInGame;
 
     public string description;
@@ -46,14 +55,15 @@ public class LevelDisplay : MonoBehaviour
     [Space(10)]
     [Header("System information")]
     public Vector3[] vertices;
-    public int[] triangles;
 
+    public int[] triangles;
 
     [Serializable]
     public class levelList
     {
         public float[] levelType;
     }
+
     [Space(10)]
     public levelList[] levelLists;
 
@@ -67,6 +77,7 @@ public class LevelDisplay : MonoBehaviour
         //col = levelData.getMapDataCount();
         Refresh();
     }
+
     //void OnDestroy()
     //{
     //    Refresh();
@@ -76,14 +87,12 @@ public class LevelDisplay : MonoBehaviour
 #if UNITY_EDITOR
         //        UnityEditor.EditorApplication.delayCall += () =>
         //        {
-
         //Debug.Log("Validate");
         if (levelData != null)
         {
             //array2d = array2DInt.GetCells();
             //for(int i=0;i<array2DInt.GridSize.x; i++)
             //    Debug.Log(array2d[0,i]);
-
 
             vertices = new Vector3[0];
             triangles = new int[0];
@@ -106,7 +115,6 @@ public class LevelDisplay : MonoBehaviour
                 GetComponent<MeshFilter>().mesh = mesh;
                 foreach (GameObject cube in cubeList)
                 {
-
 #if UNITY_EDITOR
                     UnityEditor.EditorApplication.delayCall += () =>
                     {
@@ -128,17 +136,16 @@ public class LevelDisplay : MonoBehaviour
             }
             if (setupMap == SetupMap.MoreCubes)
             {
-//                foreach (GameObject cube in cubeList)
-//                {
-
-//#if UNITY_EDITOR
-//                    UnityEditor.EditorApplication.delayCall += () =>
-//                    {
-//                        //DestroyImmediate(cube);
-//                        //DestroyImmediate(cubes);
-//                    };
-//#endif
-//                }
+                //                foreach (GameObject cube in cubeList)
+                //                {
+                //#if UNITY_EDITOR
+                //                    UnityEditor.EditorApplication.delayCall += () =>
+                //                    {
+                //                        //DestroyImmediate(cube);
+                //                        //DestroyImmediate(cubes);
+                //                    };
+                //#endif
+                //                }
                 DestroyImmediate(cubes);
                 cubeList.Clear();
 
@@ -205,10 +212,9 @@ public class LevelDisplay : MonoBehaviour
 
                         cube.transform.SetParent(cubes.transform);
                         //cube.transform.position = new Vector3(k, mass[k][n], n);
-                        TileDescription tileDescription;
 
-                        if (cube.TryGetComponent(out  tileDescription)) {
-
+                        if (cube.TryGetComponent(out TileDescription tileDescription))
+                        {
                         }
                         else
                         {
@@ -219,7 +225,8 @@ public class LevelDisplay : MonoBehaviour
 
                         cube.transform.localPosition = new Vector3(n, 0f, k);
                         cube.transform.localScale = new Vector3(1, 1f, 1);
-                        
+
+                        //кучу if лучше заменить на отдельные функции, поместить это в Dictionary и юзачть через Dictionary[index]?();
 
                         if (curElement == 1)
                         {
@@ -268,8 +275,11 @@ public class LevelDisplay : MonoBehaviour
 
                         cube.name = $"Cube {n}x{k}";
 
-                        if (cubeMaterial == null) cubeMaterial = levelMaterial.defaultMaterial;
-                        
+                        if (cubeMaterial == null)
+                        {
+                            cubeMaterial = levelMaterial.defaultMaterial;
+                        }
+
                         cube.GetComponent<MeshRenderer>().sharedMaterials = cubeMaterial;
                     }
                 }
@@ -284,13 +294,9 @@ public class LevelDisplay : MonoBehaviour
 
             //UpdateMesh();
 
-
             //description.text = levelData.description;
             //cost.text = levelData.cost.ToString();
             //levelImage.sprite = levelData.levelImage;
-
-
-
         }
         //        };
 #endif
@@ -304,14 +310,12 @@ public class LevelDisplay : MonoBehaviour
 
     private void AddToMesh(MeshShape addMesh)
     {
-
         for (int i = 0; i < addMesh.triangles.Length; i++)
         {
             addMesh.triangles[i] += vertices.Length;
         }
         vertices = vertices.Concat(addMesh.vertices).ToArray();
         triangles = triangles.Concat(addMesh.triangles).ToArray();
-
     }
 
     private MeshShape CreateGrid(int cellSizeX, int cellSizeZ, float[][] heightMap)
@@ -355,8 +359,6 @@ public class LevelDisplay : MonoBehaviour
             new Vector3(x1, 0, y2),
             new Vector3(x2, 0, y1),
             new Vector3(x2, 0, y2),
-
-
         };
 
         int[] trianglesCube = new int[]
@@ -399,5 +401,4 @@ public class LevelDisplay : MonoBehaviour
         mesh.triangles = meshShape.triangles;
         mesh.RecalculateNormals();
     }
-
 }

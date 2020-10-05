@@ -2,18 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//стоит использовать namespace
+//namespace Global.Maps.Level
+//{
 [CreateAssetMenu(fileName = "Level X", menuName = "Levels/New Level")]
 public class LevelCreateData : ScriptableObject
 {
+    //публичные поля итак будут сериализоваться, атрибут тут не нужен
     [SerializeField]
     public List<Wrapper> mapData = new List<Wrapper>();
 
+    //не объявляй одни классы внутри других
     [System.Serializable]
     public class Wrapper
     {
         public List<float> inner = new List<float>();
     }
 
+    //функции нужно писать после объявления всех переменных
     private void OnValidate()
     {
         //Debug.Log("LevelData Validate");
@@ -26,6 +32,7 @@ public class LevelCreateData : ScriptableObject
     public Sprite levelImage;
 
     public int[] rewards;
+
     [HideInInspector]
     public GameObject map;
 
@@ -41,44 +48,55 @@ public class LevelCreateData : ScriptableObject
         temp.inner = tempInner;
         mapData.Add(temp);
     }
-    void setMapDataList(List<List<float>> list)
+
+    private void setMapDataList(List<List<float>> list)
     {
         //mapData = list;
     }
+
     public int getMapDataCount()
     {
         return mapData.Count;
     }
+
+    //стоит давать понятные имена переменным, например index, count и тд
     public int getMapDataCount(int n)
     {
         return mapData[n].inner.Count;
     }
+
     public float getMapDataElementbyIndex(int n, int m)
     {
         return mapData[n].inner[m];
     }
+
     public void setMapDataElementbyIndex(int n, int m, float num)
     {
         mapData[n].inner[m] = num;
     }
+
     public void MapDataAdd(List<float> num)
     {
         Wrapper temp = new Wrapper();
         temp.inner = num;
         mapData.Add(temp);
     }
+
     public void MapDataAdd(int n, float num)
     {
         mapData[n].inner.Add(num);
     }
+
     public void MapDataClear()
     {
         mapData.Clear();
     }
+
     public void MapDataRemoveLastX()
     {
         mapData.RemoveAt(getMapDataCount() - 1);
     }
+
     public void MapDataRemoveLastY()
     {
         for (int x = 0; x < getMapDataCount(); x++)
@@ -86,5 +104,6 @@ public class LevelCreateData : ScriptableObject
             mapData[x].inner.RemoveAt(getMapDataCount(x) - 1);
         }
     }
-
 }
+
+//}

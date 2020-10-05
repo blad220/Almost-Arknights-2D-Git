@@ -1,13 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-//#if UNITY_EDITOR
-using UnityEditor;
-using UnityEditorInternal;
+﻿//#if UNITY_EDITOR
 using DragonBones;
-using Transform = UnityEngine.Transform;
-//#endif
+using System.Collections;
+using UnityEngine;
 
+//#endif
 
 public class OperatorController : MonoBehaviour
 {
@@ -19,31 +15,32 @@ public class OperatorController : MonoBehaviour
     public GameObject _operatorSkill;
 
     public enum SetupDirection { Right, Left, Top, Bottom }
+
     public SetupDirection setupDirection;
 
     public bool isAttack;
     public bool isAttackLoop;
     private bool isAttacking;
 
-    DragonBones.UnityArmatureComponent operatorObject;
+    private DragonBones.UnityArmatureComponent operatorObject;
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        if (_operatorObject.TryGetComponent( out DragonBones.UnityArmatureComponent component))
+        if (_operatorObject.TryGetComponent(out DragonBones.UnityArmatureComponent component))
         {
             operatorObject = component;
             //StartOperator();
         }
         //operatorObject = _operatorObject.GetComponent<DragonBones.UnityArmatureComponent>();
-        
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if(isAttack)
+        if (isAttack)
         {
-            if(!isAttacking)
+            if (!isAttacking)
             {
                 StartCoroutine(AnimationAttackOperator());
             }
@@ -55,20 +52,23 @@ public class OperatorController : MonoBehaviour
                 StartCoroutine(AnimationAttackLoopOperator());
             }
         }
-        
     }
+
     public void SetMaxHP(int hp)
     {
         _operatorHP.GetComponent<UIOperatorHp>().SetMaxHP(hp);
     }
+
     public void SetHP(int hp)
     {
         _operatorHP.GetComponent<UIOperatorHp>().SetHP(hp);
     }
+
     public void SetMaxSkillPoint(int maxSkillPoint)
     {
         _operatorSkill.GetComponent<UIOperatorSkill>().SetMaxSkillPoint(maxSkillPoint);
     }
+
     public void SetSkillPoint(int skillPoint)
     {
         _operatorSkill.GetComponent<UIOperatorSkill>().SetSkillPoint(skillPoint);
@@ -79,6 +79,7 @@ public class OperatorController : MonoBehaviour
         SetMaxHP(hp);
         SetHP(hp);
     }
+
     public void SetStartSkillPoint(int skillPoint, int maxSkillPoint)
     {
         SetMaxSkillPoint(maxSkillPoint);
@@ -113,6 +114,7 @@ public class OperatorController : MonoBehaviour
         _armatureComponent.sortingLayerName = _armatureComponent.sortingLayerName;
         _armatureComponent.sortingOrder = _armatureComponent.sortingOrder;
     }
+
     public void StartOperator(SetupDirection direction)
     {
         //transform.position;
@@ -124,19 +126,16 @@ public class OperatorController : MonoBehaviour
             operatorObject.armature.flipX = false;
 
             _underlayObject.transform.localEulerAngles = new Vector3(_underlayObject.transform.localEulerAngles.x, 270f, _underlayObject.transform.localEulerAngles.z);
-
-
         }
         if (direction == SetupDirection.Top)
         {
             //Transform transformOperator = operatorObject.transform;
             //operatorObject.armature.Dispose();
-            string  armatureName= operatorObject.armatureName;
-            
+            string armatureName = operatorObject.armatureName;
+
             ChangeArmatureData(operatorObject, armatureName.Replace("_Front", "_Back"), operatorObject.unityData.dataName);
             //DragonBones.UnityFactory.factory.BuildArmatureComponent("Default_Skin_Back", "Tiger_Front", null, null, gameObject, false);
 
-            
             operatorObject._armature.animation.Play("Idle", 0);
 
             operatorObject.armature.flipX = false;
@@ -148,21 +147,20 @@ public class OperatorController : MonoBehaviour
             operatorObject.armature.flipX = true;
 
             _underlayObject.transform.localEulerAngles = new Vector3(_underlayObject.transform.localEulerAngles.x, 0f, _underlayObject.transform.localEulerAngles.z);
-
         }
         if (direction == SetupDirection.Right)
         {
             operatorObject.armature.flipX = false;
 
             _underlayObject.transform.localEulerAngles = new Vector3(_underlayObject.transform.localEulerAngles.x, 180f, _underlayObject.transform.localEulerAngles.z);
-
         }
         //if (!string.IsNullOrEmpty(operatorObject.animationName))
         //{
-            StartCoroutine(AnimationStartOperator());
+        StartCoroutine(AnimationStartOperator());
         //}
     }
-    IEnumerator AnimationStartOperator()
+
+    private IEnumerator AnimationStartOperator()
     {
         operatorObject._armature.animation.Play("Start", 1);
         //Debug.Log("Animation Start");
@@ -177,14 +175,15 @@ public class OperatorController : MonoBehaviour
 
         operatorObject._armature.animation.Play("Idle", 0);
         //Debug.Log("Animation Idle");
-        yield return null;   
+        yield return null;
     }
-    IEnumerator AnimationAttackOperator()
+
+    private IEnumerator AnimationAttackOperator()
     {
         Debug.Log("Animation AnimationAtackOperator");
         isAttacking = true;
         operatorObject._armature.animation.Play("Attack", 1);
-        
+
         while (!operatorObject._armature.animation.isCompleted)
         {
             yield return new WaitForSeconds(.1f);
@@ -197,11 +196,12 @@ public class OperatorController : MonoBehaviour
         operatorObject._armature.animation.Play("Idle", 0);
         yield return null;
     }
-    IEnumerator AnimationAttackLoopOperator()
-    {
 
+    private IEnumerator AnimationAttackLoopOperator()
+    {
         isAttacking = true;
-        while (isAttackLoop) {
+        while (isAttackLoop)
+        {
             operatorObject._armature.animation.Play("Attack", 1);
 
             while (!operatorObject._armature.animation.isCompleted)
@@ -210,10 +210,8 @@ public class OperatorController : MonoBehaviour
             }
 
             //AtackDamage()
-
         }
         isAttacking = false;
-        
 
         operatorObject._armature.animation.Play("Idle", 0);
         yield return null;

@@ -1,9 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+//Название класса должно быть с большой буквы
+//Добавить namespace
 public class uiSelectAvatar : MonoBehaviour, IPointerDownHandler, IPointerClickHandler,
     IPointerUpHandler, IPointerExitHandler, IPointerEnterHandler,
     IBeginDragHandler, IDragHandler, IEndDragHandler
@@ -22,23 +22,24 @@ public class uiSelectAvatar : MonoBehaviour, IPointerDownHandler, IPointerClickH
     private Vector3 offset;
     private float timeScaleBefore;
     public bool isActive;
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         GetComponent<Image>().color = new Color32(118, 118, 118, 139);
         hoverOff = transform.localPosition;
         hoverOn = transform.localPosition + new Vector3(0f, 10f, 0f);
-        if(operatorObject.TryGetComponent(out OperatorController operatorController))
+        if (operatorObject.TryGetComponent(out OperatorController operatorController))
         {
             _operatorData = operatorController._operatorData;
         }
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-
     }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (isActive)
@@ -55,25 +56,38 @@ public class uiSelectAvatar : MonoBehaviour, IPointerDownHandler, IPointerClickH
     {
         if (isActive)
         {
-            if (_operatorData.isLowGrounded) MainController.mainObject.GetComponent<LevelControllScript>().showLowGround = true;
-            if (_operatorData.isHighGrounded) MainController.mainObject.GetComponent<LevelControllScript>().showHighGround = true;
+            if (_operatorData.isLowGrounded)
+            {
+                MainController.mainObject.GetComponent<LevelControllScript>().showLowGround = true;
+            }
+
+            if (_operatorData.isHighGrounded)
+            {
+                MainController.mainObject.GetComponent<LevelControllScript>().showHighGround = true;
+            }
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray.origin, ray.direction * 10, out hit))
+            if (Physics.Raycast(ray.origin, ray.direction * 10, out RaycastHit hit))
             {
                 if (hit.collider.gameObject.TryGetComponent<TileDescription>(out TileDescription cube))
                 {
-
                     TileDescription.TypeTile LowType = TileDescription.TypeTile.NoneStandableTyle;
                     TileDescription.TypeTile HighType = TileDescription.TypeTile.NoneStandableTyle;
-                    if (_operatorData.isLowGrounded) { LowType = TileDescription.TypeTile.LowStandableTyle; }
-                    if (_operatorData.isHighGrounded) { HighType = TileDescription.TypeTile.HighStandableTyle; }
+                    if (_operatorData.isLowGrounded)
+                    { LowType = TileDescription.TypeTile.LowStandableTyle; }
+                    if (_operatorData.isHighGrounded)
+                    { HighType = TileDescription.TypeTile.HighStandableTyle; }
 
                     if (cube.typeTile != TileDescription.TypeTile.NoneStandableTyle)
                     {
-                        if (cube.typeTile == LowType) onFieldPosition(cube);
-                        else if (cube.typeTile == HighType) onFieldPosition(cube);
+                        if (cube.typeTile == LowType)
+                        {
+                            onFieldPosition(cube);
+                        }
+                        else if (cube.typeTile == HighType)
+                        {
+                            onFieldPosition(cube);
+                        }
                         else
                         {
                             noOnFieldPosition();
@@ -87,21 +101,24 @@ public class uiSelectAvatar : MonoBehaviour, IPointerDownHandler, IPointerClickH
             }
         }
     }
+
     private TileDescription targetCube;
-    void onFieldPosition(TileDescription cube)
+
+    private void onFieldPosition(TileDescription cube)
     {
         operatorObject.transform.position = cube.standByPosition.position;
         isCanPlace = true;
         targetCube = cube;
     }
-    void noOnFieldPosition()
+
+    private void noOnFieldPosition()
     {
         //Vector3 transformOperator = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPosition.z));
         //operatorObject.transform.position = new Vector3(transformOperator.x, 1f, transformOperator.z);
         operatorObject.transform.position = new Vector3(9999f, 9999f, 9999f);
         isCanPlace = false;
     }
- 
+
     public void OnEndDrag(PointerEventData eventData)
     {
         if (isActive)

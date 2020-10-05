@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,28 +16,32 @@ public class OperatorPanelCreate : MonoBehaviour
     public RuntimeAnimatorController _AnimatorController;
 
     public Color colorPanelBefore = new Color();
-    void Awake()
+
+    private void Awake()
     {
-        
     }
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         OperatorPanelCreate link = MainController.mainInterfaceFields.operatorPanelCreate;
-        if (link == null) MainController.mainInterfaceFields.operatorPanelCreate = gameObject.GetComponent<OperatorPanelCreate>();
+        if (link == null)
+        {
+            MainController.mainInterfaceFields.operatorPanelCreate = gameObject.GetComponent<OperatorPanelCreate>();
+        }
         //colorPanelBefore = GetComponent<Image>().color;
 
         ((RectTransform)gameObject.transform).anchorMin = new Vector2(1f, 0.5f);
         ((RectTransform)gameObject.transform).anchorMax = new Vector2(1f, 0.5f);
         ((RectTransform)gameObject.transform).pivot = new Vector2(0.5f, 0.5f);
-        ((RectTransform)gameObject.transform).sizeDelta = new Vector2(MainController.operatorOnGame.Length*90f, 90f);
+        ((RectTransform)gameObject.transform).sizeDelta = new Vector2(MainController.operatorOnGame.Length * 90f, 90f);
         ((RectTransform)gameObject.transform).anchoredPosition = new Vector3(((MainController.operatorOnGame.Length * -90f) * 0.5f), gameObject.transform.localPosition.y, gameObject.transform.localPosition.z);
 
         for (int i = 0; i < MainController.operatorOnGame.Length; i++)
         {
             GameObject imageOperator = Instantiate(operatorUIPrefab);
             //GameObject imageOperator = new GameObject();
-            imageOperator.transform.SetParent(this.transform);
+            imageOperator.transform.SetParent(transform);
 
             OperatorsPanel.Add(imageOperator);
 
@@ -51,7 +54,6 @@ public class OperatorPanelCreate : MonoBehaviour
             //avatar.transform.SetParent(imageOperator.transform);
 
             imageOperator.name = MainController.operatorOnGame[i].Name;
-
 
             //Image image = imageOperator.AddComponent<Image>();
             //image.color = colorPanel;
@@ -66,13 +68,12 @@ public class OperatorPanelCreate : MonoBehaviour
 
             //animator.runtimeAnimatorController = _AnimatorController;
 
-
-
-
             //((RectTransform)imageOperator.transform).sizeDelta = new Vector2(90f, 100f);
             //((RectTransform)imageOperator.transform).anchorMin = new Vector2(1f, 1f);
             //((RectTransform)imageOperator.transform).anchorMax = new Vector2(1f, 1f);
             //((RectTransform)imageOperator.transform).pivot = new Vector2(1f, 1f);
+
+            //магические числа в векторе
             ((RectTransform)imageOperator.transform).localScale = new Vector3(1f, 1f, 1f);
             ((RectTransform)imageOperator.transform).anchoredPosition = new Vector3((-90f * i), 0f, 0f);
 
@@ -87,8 +88,8 @@ public class OperatorPanelCreate : MonoBehaviour
             Text DpCostField = SelectAvatar.DpCost;
             DpCostField.text = MainController.operatorOnGame[i].DpCost.ToString();
         }
-        
     }
+
     public GameObject CreateOperator(GameObject operatorCreate, OperatorData operatorData)
     {
         GameObject OperatorUI = Instantiate(MainController.OperatorInterfaseObject, operatorsParent.transform);
@@ -114,6 +115,7 @@ public class OperatorPanelCreate : MonoBehaviour
 
         return OperatorUI;
     }
+
     public void checkDPCostAndUnitLimit()
     {
         foreach (GameObject operatopPanel in OperatorsPanel)
@@ -130,7 +132,7 @@ public class OperatorPanelCreate : MonoBehaviour
             {
                 operatopPanel.GetComponent<uiSelectAvatar>().isActive = false;
                 operatopPanel.GetComponent<Button>().interactable = false;
-                operatopPanel.GetComponent<Image>().color =  new Color32(118, 118, 118, 139);
+                operatopPanel.GetComponent<Image>().color = new Color32(118, 118, 118, 139);
             }
         }
     }

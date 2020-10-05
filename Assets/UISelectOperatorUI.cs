@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class UISelectOperatorUI : MonoBehaviour
@@ -14,8 +12,10 @@ public class UISelectOperatorUI : MonoBehaviour
 
     [Space(10)]
     public Text Level;
+
     public Image OperatorElitImage;
     public operatorElitImages OperatorElitImages;
+
     [System.Serializable]
     public class operatorElitImages
     {
@@ -26,7 +26,9 @@ public class UISelectOperatorUI : MonoBehaviour
 
     [Space(10)]
     public Image operatorTypeImage;
+
     public TypeOperatorSprite operatorTypeSprite;
+
     [System.Serializable]
     public class TypeOperatorSprite
     {
@@ -39,19 +41,20 @@ public class UISelectOperatorUI : MonoBehaviour
         public Sprite Defender;
         public Sprite Vanguard;
     }
+
     [Space(10)]
     public Image artBig;
 
     [Space(10)]
     public Slider HP;
+
     public Text Attack;
     public Text Defense;
     public Text RES;
 
     [Space(10)]
-    //public Text RedeployTyme;
-    //public Text DpCost;
     public Text Block;
+
     public Text BlockBig;
     //public Text ASPD;
 
@@ -59,17 +62,22 @@ public class UISelectOperatorUI : MonoBehaviour
     public Text SkillName;
     public Text SkillDescription;
 
-    void Awake()
+    private void Awake()
     {
         UISelectOperatorUI link = MainController.mainInterfaceFields.selectOperatorUI;
-        if (link == null) MainController.mainInterfaceFields.selectOperatorUI = gameObject.GetComponent<UISelectOperatorUI>();
+        if (link == null)
+        {
+            MainController.mainInterfaceFields.selectOperatorUI = gameObject.GetComponent<UISelectOperatorUI>();
+        }
     }
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         //updateSelectInfo();
     }
-    void Update()
+
+    private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -99,19 +107,51 @@ public class UISelectOperatorUI : MonoBehaviour
             Debug.Log("Mouse is down");
         }
     }
-    void updateSelectInfo(OperatorData operatorData)
+
+    private void updateSelectInfo(OperatorData operatorData)
     {
         Name.text = operatorData.Name;
         Level.text = operatorData.Level.ToString();
 
-        if (operatorData.OperatorType == OperatorData.OperatorTypeEnum.Caster) operatorTypeImage.sprite = operatorTypeSprite.Caster;
-        if (operatorData.OperatorType == OperatorData.OperatorTypeEnum.Guard) operatorTypeImage.sprite = operatorTypeSprite.Guard;
-        if (operatorData.OperatorType == OperatorData.OperatorTypeEnum.Medic) operatorTypeImage.sprite = operatorTypeSprite.Medic;
-        if (operatorData.OperatorType == OperatorData.OperatorTypeEnum.Sniper) operatorTypeImage.sprite = operatorTypeSprite.Sniper;
-        if (operatorData.OperatorType == OperatorData.OperatorTypeEnum.Specialist) operatorTypeImage.sprite = operatorTypeSprite.Specialist;
-        if (operatorData.OperatorType == OperatorData.OperatorTypeEnum.Supporter) operatorTypeImage.sprite = operatorTypeSprite.Supporter;
-        if (operatorData.OperatorType == OperatorData.OperatorTypeEnum.Defender) operatorTypeImage.sprite = operatorTypeSprite.Defender;
-        if (operatorData.OperatorType == OperatorData.OperatorTypeEnum.Vanguard) operatorTypeImage.sprite = operatorTypeSprite.Vanguard;
+        if (operatorData.OperatorType == OperatorData.OperatorTypeEnum.Caster)
+        {
+            operatorTypeImage.sprite = operatorTypeSprite.Caster;
+        }
+
+        if (operatorData.OperatorType == OperatorData.OperatorTypeEnum.Guard)
+        {
+            operatorTypeImage.sprite = operatorTypeSprite.Guard;
+        }
+
+        if (operatorData.OperatorType == OperatorData.OperatorTypeEnum.Medic)
+        {
+            operatorTypeImage.sprite = operatorTypeSprite.Medic;
+        }
+
+        if (operatorData.OperatorType == OperatorData.OperatorTypeEnum.Sniper)
+        {
+            operatorTypeImage.sprite = operatorTypeSprite.Sniper;
+        }
+
+        if (operatorData.OperatorType == OperatorData.OperatorTypeEnum.Specialist)
+        {
+            operatorTypeImage.sprite = operatorTypeSprite.Specialist;
+        }
+
+        if (operatorData.OperatorType == OperatorData.OperatorTypeEnum.Supporter)
+        {
+            operatorTypeImage.sprite = operatorTypeSprite.Supporter;
+        }
+
+        if (operatorData.OperatorType == OperatorData.OperatorTypeEnum.Defender)
+        {
+            operatorTypeImage.sprite = operatorTypeSprite.Defender;
+        }
+
+        if (operatorData.OperatorType == OperatorData.OperatorTypeEnum.Vanguard)
+        {
+            operatorTypeImage.sprite = operatorTypeSprite.Vanguard;
+        }
 
         if (operatorData.Elite == OperatorData.EliteEnum.Elite_0)
         {

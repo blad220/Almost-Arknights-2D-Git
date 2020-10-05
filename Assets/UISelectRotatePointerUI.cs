@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
-public class UISelectRotatePointerUI : MonoBehaviour, 
+public class UISelectRotatePointerUI : MonoBehaviour,
     IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public Color32 topColor;
@@ -12,9 +9,9 @@ public class UISelectRotatePointerUI : MonoBehaviour,
     public Color32 leftColor;
     public Color32 bottomColor;
 
-    UISelectRotateUI selectRotateUI;
+    private UISelectRotateUI selectRotateUI;
 
-    void Start()
+    private void Start()
     {
         selectRotateUI = MainController.mainInterfaceFields.selectRotateUI;
         topColor = selectRotateUI.topObjectImage.color;
@@ -22,6 +19,7 @@ public class UISelectRotatePointerUI : MonoBehaviour,
         leftColor = selectRotateUI.leftObjectImage.color;
         bottomColor = selectRotateUI.bottomObjectImage.color;
     }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         isEndDrag = false;
@@ -29,7 +27,6 @@ public class UISelectRotatePointerUI : MonoBehaviour,
 
     public void OnDrag(PointerEventData eventData)
     {
-        
         transform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f);
         Vector3 prePosition = transform.localPosition;
         float Min = -80f;
@@ -78,7 +75,6 @@ public class UISelectRotatePointerUI : MonoBehaviour,
 
     public void OnEndDrag(PointerEventData eventData)
     {
-
         selectRotateUI.rightObjectImage.color = rightColor;
         selectRotateUI.leftObjectImage.color = leftColor;
         selectRotateUI.topObjectImage.color = topColor;
@@ -113,15 +109,16 @@ public class UISelectRotatePointerUI : MonoBehaviour,
             selectRotateUI.SelectRotateOpen(false);
             MainController.DeployOperator(selectRotateUI.getTarget(), selectRotateUI.getCubeTile());
         }
-
     }
 
     private bool isEndDrag;
-    // Update is called once per frame
-    void Update()
-    {
-        
-        if(isEndDrag && transform.localPosition != Vector3.zero) transform.localPosition = Vector3.Lerp(transform.localPosition, Vector3.zero, 0.1f);
 
+    // Update is called once per frame
+    private void Update()
+    {
+        if (isEndDrag && transform.localPosition != Vector3.zero)
+        {
+            transform.localPosition = Vector3.Lerp(transform.localPosition, Vector3.zero, 0.1f);
+        }
     }
 }
