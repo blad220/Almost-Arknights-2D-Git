@@ -15,6 +15,7 @@ MonoBehaviour:
   Name: Tiger
   prefabOfOperator: {fileID: 3529257746593351902, guid: a0c6ec0c81149ef4b920885cde16f91d,
     type: 3}
+  rangeOfOperator: {fileID: 11400000, guid: c8ae29f082986b647a39ba15b8d9993c, type: 2}
   Elite: 1
   Level: 50
   OperatorType: 1

@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "Level X", menuName = "Levels/New Level")]
 public class LevelCreateData : ScriptableObject
 {
+
     [SerializeField]
     public List<Wrapper> mapData = new List<Wrapper>();
 

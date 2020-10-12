@@ -18,12 +18,12 @@ public class UITogleSpeedUI : MonoBehaviour, IPointerClickHandler
         isFast = !isFast;
         if (isFast)
         {
-            Time.timeScale = 2f;
+            MainController.SetCurrentTimeScale(2f);
             textField.text = "2X";
         }
         else
         {
-            Time.timeScale = 1f;
+            MainController.SetCurrentTimeScale(1f);
             textField.text = "1X";
         }
     }

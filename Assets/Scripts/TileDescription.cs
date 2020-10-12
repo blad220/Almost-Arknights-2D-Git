@@ -7,37 +7,22 @@ public class TileDescription : MonoBehaviour
     //Material material;
     public enum TypeTile { HighStandableTyle, LowStandableTyle, NoneStandableTyle, FireTyle }
     public TypeTile typeTile;
-
-    private TypeTile typeTileOnStartGame;
-
     public Transform standByPosition;
+
+    public TypeTile typeTileOnStartGame;
+
     // Start is called before the first frame update
     void Awake()
     {
         typeTileOnStartGame = typeTile;
     }
-
-    // Update is called once per frame
-    void Update()
+    public void Reset()
     {
-        
+        typeTile = typeTileOnStartGame;
     }
-    private void OnValidate()
+    public void SetStartTypeTile(TypeTile _typeTile)
     {
-        //Material materialTemp = GetComponent<Renderer>().material;
-        //if(materialTemp != null)
-        //{
-        //    material = materialTemp;
-        //}
-        //else
-        //{
-        //    materialTemp = material;
-        //}
-
-        //if(typeTile != TypeTile.DefultTyle)
-        //{
-
-        //}
+        typeTile = _typeTile;
+        typeTileOnStartGame = _typeTile;
     }
-
 }

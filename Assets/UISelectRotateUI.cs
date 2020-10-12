@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Operator;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -40,10 +41,25 @@ public class UISelectRotateUI : MonoBehaviour
     }
     public void placeSelectRotate(GameObject operatorObject, TileDescription cube, bool isActive)
     {
+        operatorObject.GetComponent<OperatorController>().tilePosition = cube;
+
         target = operatorObject;
         cubeTile = cube;
 
         SelectRotateOpen(isActive);
+        //operatorObject.GetComponent<OperatorController>().setupDirection = OperatorController.SetupDirection.
+    }
+    public void unPlaceSelectRotate()
+    {
+        target.GetComponent<OperatorController>().tilePosition = null;
+        target.transform.position = new Vector3(9999f, 9999f, 9999f);
+
+        target = null;
+        cubeTile = null;
+
+        SelectRotateOpen(false);
+
+        MainController.TimeScaleReset();
         //operatorObject.GetComponent<OperatorController>().setupDirection = OperatorController.SetupDirection.
     }
     public void SelectRotateOpen(bool isActive)

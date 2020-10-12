@@ -15,6 +15,7 @@ MonoBehaviour:
   Name: Grey Throat
   prefabOfOperator: {fileID: 778595539748935944, guid: 7d544edde77181a438db0ad8aada927b,
     type: 3}
+  rangeOfOperator: {fileID: 11400000, guid: 6c579100fb7351e47b5d2679d99ed99e, type: 2}
   Elite: 1
   Level: 50
   OperatorType: 3

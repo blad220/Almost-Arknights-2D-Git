@@ -23,7 +23,10 @@ public class UIOperatorHp : MonoBehaviour
         fill.color = gradient.Evaluate(hpBar.normalizedValue);
 
     }
-
+    public int GetHPValue()
+    {
+        return (int)hpBar.value;
+    }
     public void SetMaxHP(int health)
     {
         hpBar.maxValue = health;

@@ -15,6 +15,7 @@ MonoBehaviour:
   Name: Yak
   prefabOfOperator: {fileID: 59855554693053642, guid: b652388496f1e9744b846005f8f3b95f,
     type: 3}
+  rangeOfOperator: {fileID: 11400000, guid: 8f4d95b1bc6b2c142a7144659fb263c3, type: 2}
   Elite: 1
   Level: 50
   OperatorType: 6

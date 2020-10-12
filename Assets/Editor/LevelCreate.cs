@@ -14,11 +14,10 @@ public class LevelCreate : Editor
 
     public GameObject map = null;
     LevelCreateData level;
+
     void OnEnable()
     {
         level = (target as LevelDisplay).levelData;
-        //map = level.map;
-        //(target as LevelDisplay).Refresh();
     }
 
     void GUIInicialaize()

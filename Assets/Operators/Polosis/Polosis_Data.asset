@@ -15,6 +15,7 @@ MonoBehaviour:
   Name: Polosis
   prefabOfOperator: {fileID: 284530385444764818, guid: 3214f0f1cc807b6479349b6450fb87d6,
     type: 3}
+  rangeOfOperator: {fileID: 11400000, guid: 952ef0d966ed6de4290601f02c8954da, type: 2}
   Elite: 1
   Level: 50
   OperatorType: 2

@@ -20,7 +20,7 @@ MonoBehaviour:
     - 2
     - 1
     - 1
-    - 4
+    - -1
   - inner:
     - 1
     - -1
@@ -28,7 +28,7 @@ MonoBehaviour:
     - -1
     - -1
     - -1
-    - 4
+    - -1
   - inner:
     - -1
     - -1
@@ -36,7 +36,7 @@ MonoBehaviour:
     - 1
     - 1
     - 1
-    - 4
+    - -1
   - inner:
     - -1
     - -1
@@ -44,7 +44,7 @@ MonoBehaviour:
     - 2
     - 2
     - 1
-    - 4
+    - -1
   - inner:
     - -1
     - -1
@@ -52,7 +52,7 @@ MonoBehaviour:
     - 1
     - -1
     - 1
-    - 4
+    - -1
   - inner:
     - 1
     - 1
@@ -60,7 +60,7 @@ MonoBehaviour:
     - 2
     - 1
     - 2
-    - 4
+    - -1
   - inner:
     - 1
     - 1
@@ -68,7 +68,7 @@ MonoBehaviour:
     - 2
     - 1
     - 2
-    - 4
+    - -1
   - inner:
     - 1
     - -1
@@ -76,7 +76,7 @@ MonoBehaviour:
     - 1
     - -1
     - 1
-    - 4
+    - -1
   - inner:
     - 1
     - 2
@@ -84,7 +84,7 @@ MonoBehaviour:
     - 2
     - 1
     - 1
-    - 4
+    - -1
   - inner:
     - 1
     - 1
@@ -92,7 +92,7 @@ MonoBehaviour:
     - 1
     - 1
     - 1
-    - 4
+    - -1
   - inner:
     - -1
     - -1
@@ -100,7 +100,7 @@ MonoBehaviour:
     - -1
     - -1
     - -1
-    - 4
+    - -1
   - inner:
     - 1
     - 1
@@ -108,7 +108,7 @@ MonoBehaviour:
     - 1
     - 1
     - 1
-    - 4
+    - -1
   description: Some
   cost: 0
   levelImage: {fileID: 0}

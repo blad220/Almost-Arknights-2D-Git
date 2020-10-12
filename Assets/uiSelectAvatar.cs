@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Operator;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -13,6 +14,8 @@ public class uiSelectAvatar : MonoBehaviour, IPointerDownHandler, IPointerClickH
     public GameObject Avatar;
     public Text DpCost;
 
+    public bool isActive;
+
     private Vector3 hoverOn;
     private Vector3 hoverOff;
     private OperatorData _operatorData;
@@ -21,7 +24,8 @@ public class uiSelectAvatar : MonoBehaviour, IPointerDownHandler, IPointerClickH
     private Vector3 screenPosition;
     private Vector3 offset;
     private float timeScaleBefore;
-    public bool isActive;
+
+    private TileDescription targetCube;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,11 +47,15 @@ public class uiSelectAvatar : MonoBehaviour, IPointerDownHandler, IPointerClickH
     {
         if (isActive)
         {
-            Debug.Log("Drag Begin");
+            //Debug.Log("Drag Begin");
             screenPosition = Camera.main.WorldToScreenPoint(operatorObject.transform.position);
             offset = operatorObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPosition.z));
-            timeScaleBefore = Time.timeScale;
-            Time.timeScale = 0.5f;
+
+            operatorObject.GetComponent<OperatorController>().ShowRange();
+            MainController.mainInterfaceFields.selectOperatorUI.updateSelectInfo(_operatorData);
+            MainController.mainInterfaceFields.selectOperatorUI.displaySelectedPanel.SetActive(true);
+            MainController.SetCurrentTimeScale(0.5f);
+
         }
     }
 
@@ -87,7 +95,7 @@ public class uiSelectAvatar : MonoBehaviour, IPointerDownHandler, IPointerClickH
             }
         }
     }
-    private TileDescription targetCube;
+    
     void onFieldPosition(TileDescription cube)
     {
         operatorObject.transform.position = cube.standByPosition.position;
@@ -119,7 +127,7 @@ public class uiSelectAvatar : MonoBehaviour, IPointerDownHandler, IPointerClickH
             }
             //Debug.Log("" + MainController.isDeployedOperator(operatorObject));
             //Debug.Log("" + MainController.getDeployedOperatorIndex(operatorObject));
-            Time.timeScale = timeScaleBefore;
+            
 
             //Debug.Log("Drag Ended");
         }
@@ -127,12 +135,12 @@ public class uiSelectAvatar : MonoBehaviour, IPointerDownHandler, IPointerClickH
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Clicked: " + eventData.pointerCurrentRaycast.gameObject.name);
+        //Debug.Log("Clicked: " + eventData.pointerCurrentRaycast.gameObject.name);
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("Mouse Down: " + eventData.pointerCurrentRaycast.gameObject.name);
+        //MainController.mainInterfaceFields.selectOperatorUI.displaySelectedPanel.SetActive();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -149,6 +157,6 @@ public class uiSelectAvatar : MonoBehaviour, IPointerDownHandler, IPointerClickH
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        Debug.Log("Mouse Up");
+        //Debug.Log("Mouse Up");
     }
 }

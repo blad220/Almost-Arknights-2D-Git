@@ -3,18 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UISelectRotateCloseUI : MonoBehaviour, IPointerClickHandler
+public class UISelectRotateCloseUI : MonoBehaviour, IPointerDownHandler
 {
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnPointerDown(PointerEventData eventData)
     {
-        Time.timeScale = 1f;
-        MainController.mainInterfaceFields.selectRotateUI.SelectRotateOpen(false);
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+        MainController.mainInterfaceFields.selectRotateUI.unPlaceSelectRotate();
     }
     
 }

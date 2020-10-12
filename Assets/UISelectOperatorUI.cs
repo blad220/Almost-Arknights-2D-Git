@@ -1,13 +1,15 @@
-﻿using System.Collections;
+﻿using Operator;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UISelectOperatorUI : MonoBehaviour
 {
-    public OperatorData _operatorData;
+    public OperatorController operatorController;
 
     public GameObject displaySelectedPanel;
+    public KillButton killButton;
 
     [Space(10)]
     public Text Name;
@@ -67,39 +69,54 @@ public class UISelectOperatorUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        displaySelectedPanel.SetActive(false);
         //updateSelectInfo();
     }
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("Mouse is down");
+            //Debug.Log("Mouse is down");
 
             RaycastHit hitInfo = new RaycastHit();
             bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo);
             if (hit)
             {
-                Debug.Log("Hit " + hitInfo.transform.gameObject.name);
-                if (hitInfo.transform.gameObject.TryGetComponent<OperatorController>(out OperatorController operatorController))
+                //Debug.Log("Hit " + hitInfo.transform.gameObject.name);
+                if (hitInfo.transform.gameObject.TryGetComponent<OperatorController>(out OperatorController _operatorController))
                 {
+                    if (operatorController != null)
+                    {
+                        operatorController.HideRange();
+                    }
+                    operatorController = _operatorController;
                     updateSelectInfo(operatorController._operatorData);
                     displaySelectedPanel.SetActive(true);
-                    Debug.Log("It's working!");
+                    operatorController.ShowRange();
+                    //MainController.SetCurrentTimeScale(0.5f, false);
+                    //Debug.Log("It's working!");
                 }
                 else
                 {
                     displaySelectedPanel.SetActive(false);
-                    Debug.Log("nopz");
+
+                    if (operatorController != null)
+                    {
+                        operatorController.HideRange();
+                    }
+
+                    //MainController.TimeScaleReset();
+                    //Debug.Log("nopz");
                 }
             }
             else
             {
-                Debug.Log("No hit");
+                //Debug.Log("No hit");
             }
-            Debug.Log("Mouse is down");
+            //Debug.Log("Mouse is down");
         }
     }
-    void updateSelectInfo(OperatorData operatorData)
+    public void updateSelectInfo(OperatorData operatorData)
     {
         Name.text = operatorData.Name;
         Level.text = operatorData.Level.ToString();
@@ -142,5 +159,7 @@ public class UISelectOperatorUI : MonoBehaviour
         SkillImage.sprite = operatorData.skills[(int)operatorData.activeSkill].skillImage;
         SkillName.text = operatorData.skills[(int)operatorData.activeSkill].name;
         SkillDescription.text = operatorData.skills[(int)operatorData.activeSkill].description;
+
+        killButton.killOperatorObject = operatorController;
     }
 }

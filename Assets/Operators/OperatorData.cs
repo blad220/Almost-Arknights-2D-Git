@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Operator.Range;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +8,8 @@ public class OperatorData : ScriptableObject
 {
     public string Name;
     public GameObject prefabOfOperator;
-    
+    public RangeOfOperator rangeOfOperator;
+
     [Space(10)]
     public EliteEnum Elite;
     public enum EliteEnum { Elite_0, Elite_1, Elite_2 }

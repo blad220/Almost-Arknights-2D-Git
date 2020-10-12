@@ -15,6 +15,7 @@ MonoBehaviour:
   Name: Svrash
   prefabOfOperator: {fileID: 7428992898108749869, guid: d8daa8eb643c31144baffa51e672ac5c,
     type: 3}
+  rangeOfOperator: {fileID: 11400000, guid: 62e6413052fa6b94887799286512f83a, type: 2}
   Elite: 1
   Level: 50
   OperatorType: 1

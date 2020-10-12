@@ -223,7 +223,8 @@ public class LevelDisplay : MonoBehaviour
 
                         if (curElement == 1)
                         {
-                            tileDescription.typeTile = TileDescription.TypeTile.LowStandableTyle;
+                            //tileDescription.typeTile = TileDescription.TypeTile.LowStandableTyle;
+                            tileDescription.SetStartTypeTile(TileDescription.TypeTile.LowStandableTyle);
                             cubeMaterial = levelMaterial.groundTile;
 
                             cube.transform.localPosition = new Vector3(n, 0f, k);
@@ -231,7 +232,8 @@ public class LevelDisplay : MonoBehaviour
                         }
                         if (curElement == 2)
                         {
-                            tileDescription.typeTile = TileDescription.TypeTile.HighStandableTyle;
+                            //tileDescription.typeTile = TileDescription.TypeTile.HighStandableTyle;
+                            tileDescription.SetStartTypeTile(TileDescription.TypeTile.HighStandableTyle);
                             cubeMaterial = levelMaterial.highTile;
 
                             cube.transform.localPosition = new Vector3(n, 0f, k);
@@ -239,7 +241,8 @@ public class LevelDisplay : MonoBehaviour
                         }
                         if (curElement == -1)
                         {
-                            tileDescription.typeTile = TileDescription.TypeTile.LowStandableTyle;
+                            //tileDescription.typeTile = TileDescription.TypeTile.LowStandableTyle;
+                            tileDescription.SetStartTypeTile(TileDescription.TypeTile.LowStandableTyle);
                             cubeMaterial = levelMaterial.groundTileNoStandable;
 
                             cube.transform.localPosition = new Vector3(n, 0f, k);
@@ -247,7 +250,8 @@ public class LevelDisplay : MonoBehaviour
                         }
                         if (curElement == -2)
                         {
-                            tileDescription.typeTile = TileDescription.TypeTile.HighStandableTyle;
+                            //tileDescription.typeTile = TileDescription.TypeTile.HighStandableTyle;
+                            tileDescription.SetStartTypeTile(TileDescription.TypeTile.HighStandableTyle);
                             cubeMaterial = levelMaterial.highTileNoStandable;
 
                             cube.transform.localPosition = new Vector3(n, 0f, k);
@@ -255,7 +259,8 @@ public class LevelDisplay : MonoBehaviour
                         }
                         if (curElement == 4)
                         {
-                            tileDescription.typeTile = TileDescription.TypeTile.NoneStandableTyle;
+                            //tileDescription.typeTile = TileDescription.TypeTile.NoneStandableTyle;
+                            tileDescription.SetStartTypeTile(TileDescription.TypeTile.NoneStandableTyle);
                             cubeMaterial = levelMaterial.defaultMaterial;
 
                             cube.transform.localPosition = new Vector3(n, 0f, k);
@@ -263,7 +268,8 @@ public class LevelDisplay : MonoBehaviour
                         }
                         if (curElement != 1 && curElement != 2)
                         {
-                            tileDescription.typeTile = TileDescription.TypeTile.NoneStandableTyle;
+                            //tileDescription.typeTile = TileDescription.TypeTile.NoneStandableTyle;
+                            tileDescription.SetStartTypeTile(TileDescription.TypeTile.NoneStandableTyle);
                         }
 
                         cube.name = $"Cube {n}x{k}";

@@ -15,6 +15,7 @@ MonoBehaviour:
   Name: Shira Yuki
   prefabOfOperator: {fileID: 4885775223291380573, guid: cd41de0754f643f4fb7c865950225c67,
     type: 3}
+  rangeOfOperator: {fileID: 11400000, guid: 02ee9ae04f8950f44859c059b8e24296, type: 2}
   Elite: 2
   Level: 50
   OperatorType: 3
