@@ -31,12 +31,14 @@ MonoBehaviour:
   DpCost: 20
   Block: 2
   ASPD: 1.3
-  Range: 0
   isLowGrounded: 1
   isHighGrounded: 0
+  HealParticle: {fileID: 0}
+  bulletController: {fileID: 0}
   CurrentEXP: 0
   NextLevelEXP: 100
-  activeSkill: 2
+  skill: {fileID: 11400000, guid: 57b9d7dee360b65419fbc967b18cca99, type: 2}
+  activeSkill: 0
   skills:
   - name: "Powerful Strike\xB7Type \u03B3"
     skillImage: {fileID: 21300000, guid: c89eb97681d921040b1aae2eba3b55ab, type: 3}

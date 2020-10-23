@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f595334e1c88f9642bc5a7063cc88c5d, type: 3}
+  m_Name: Svrash_Skill_1
+  m_EditorClassIdentifier: 
+  name: "Powerful Strike\xB7Type \u03B3"
+  skillImage: {fileID: 21300000, guid: a56b5a4f6dc99744d9e628b6f6f6c5e3, type: 3}
+  description: The next attack deals 210% damage
+  cost: 3
+  initCost: 0
+  duration: 0
+  SkillEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000}
+        m_MethodName: Svrash_Skill1
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  curDurationTime: 0
+  isActive: 0
+  isCanActive: 0
+  rangeOfSkill: {fileID: 0}

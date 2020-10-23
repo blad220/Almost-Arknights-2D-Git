@@ -24,29 +24,19 @@ MonoBehaviour:
   artSmall: {fileID: 21300000, guid: 768f9b9c4e94b7246b7bbbee555054e7, type: 3}
   curHP: 1197
   maxHP: 1197
-  Attack: 248
+  Attack: 330
+  isHealAttack: 1
   Defense: 116
   RES: 0
   RedeployTyme: 70
   DpCost: 17
   Block: 1
   ASPD: 2.85
-  Range: 0
   isLowGrounded: 0
   isHighGrounded: 1
+  HealParticle: {fileID: 451883283204853064, guid: 8ff51a5d3683b9f4a90dba4eef2b7258,
+    type: 3}
+  bulletController: {fileID: 0}
   CurrentEXP: 0
   NextLevelEXP: 100
-  activeSkill: 0
-  skills:
-  - name: "Healing Strengthening\xB7Type \u03B3"
-    skillImage: {fileID: 21300000, guid: bbc654585ab3af649b1032a3062c11b7, type: 3}
-    description: Attack +60%
-    cost: 35
-    initCost: 20
-    duration: 30
-  - name: Enkephalin
-    skillImage: {fileID: 21300000, guid: 36c5d6d211b020348a90d74412870886, type: 3}
-    description: Increase attack range, highly reduce attack interval (-1.8 seconds)
-    cost: 100
-    initCost: 70
-    duration: 34
+  skill: {fileID: 11400000, guid: 657214598cc6132478284f362ecad95b, type: 2}

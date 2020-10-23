@@ -19,3 +19,4 @@ MonoBehaviour:
   OperatorPositionY: 0
   RangeData:
   - inner: 00
+  - inner: 01

@@ -31,11 +31,14 @@ MonoBehaviour:
   DpCost: 27
   Block: 1
   ASPD: 2.8
-  Range: 0
   isLowGrounded: 0
   isHighGrounded: 1
+  HealParticle: {fileID: 0}
+  bulletController: {fileID: 7908134163941122760, guid: ef4b6021ba524ce418af71e97487886e,
+    type: 3}
   CurrentEXP: 0
   NextLevelEXP: 100
+  skill: {fileID: 11400000, guid: 0dade4a011fb11e4d93988b1f7ebf199, type: 2}
   activeSkill: 0
   skills:
   - name: Whirlwind

@@ -22,7 +22,7 @@ MonoBehaviour:
   artBig_Ellite0: {fileID: 21300000, guid: ea1a4fe26e1a7cd4bb3df031a6f74e1f, type: 3}
   artBig_Ellite2: {fileID: 21300000, guid: 65afd20d21a1617479bddeb8b8c0811e, type: 3}
   artSmall: {fileID: 21300000, guid: f03d8b95c695fef4796700b2d1693bd3, type: 3}
-  curHP: 2168
+  curHP: 2053
   maxHP: 2168
   Attack: 307
   Defense: 467
@@ -31,11 +31,13 @@ MonoBehaviour:
   DpCost: 19
   Block: 3
   ASPD: 1.2
-  Range: 0
   isLowGrounded: 1
   isHighGrounded: 0
+  HealParticle: {fileID: 0}
+  bulletController: {fileID: 0}
   CurrentEXP: 0
   NextLevelEXP: 100
+  skill: {fileID: 11400000, guid: f277952a63e29784d90ab00345cf1cc5, type: 2}
   activeSkill: 1
   skills:
   - name: Body Strengthening

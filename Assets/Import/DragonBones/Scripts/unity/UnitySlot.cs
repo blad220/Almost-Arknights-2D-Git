@@ -622,6 +622,7 @@ namespace DragonBones
                 //localPosition
                 var flipX = _armature.flipX;
                 var flipY = _armature.flipY;
+
                 var transform = _renderDisplay.transform;
 
                 _helpVector3.x = global.x;

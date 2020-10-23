@@ -1,16 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using static Operator.Range.RangeOfOperator;
+using MainController.Operator.Range;
+using static MainController.Operator.Range.RangeOfOperator;
 
 namespace Operator.Range
 {
-    [CustomEditor(typeof(RangeOfOperator)), CanEditMultipleObjects]
+    [CustomEditor(typeof(RangeOfOperator))]
     public class RangeOfOperatorEditor : Editor
     {
         public RangeOfOperator rangeOfOperator;
-        public List<Wrapper> RangeData;
+
+        public List<Wrapper> RangeData = new List<Wrapper>();
 
         private Vector2 scrollPos;
         private bool removeX;
@@ -26,8 +27,10 @@ namespace Operator.Range
         {
             rangeOfOperator = (target as RangeOfOperator);
             RangeData = rangeOfOperator.RangeData;
+
+            EditorUtility.SetDirty(serializedObject.FindProperty("RangeData").serializedObject.targetObject);
         }
-      
+
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
@@ -76,22 +79,11 @@ namespace Operator.Range
 
             GUILayout.BeginHorizontal(customHorizontal);
 
-            //level.map = (GameObject)EditorGUILayout.ObjectField("", level.map, typeof(GameObject), true);
-
-            if (GUILayout.Button("Reload", styleButton))
-            {
-                //(target as LevelDisplay).OnValidate();
-                //rangeOfOperator.Refresh();
-
-                //map.GetComponent<LevelDisplay>().OnValidate();
-            }
             GUILayout.EndHorizontal();
             GUILayout.Space(5);
 
-
             using (var verticalScope = new GUILayout.VerticalScope("box"))
             {
-
 
                 GUILayout.Space(5);
                 GUILayout.BeginHorizontal();
@@ -116,6 +108,7 @@ namespace Operator.Range
 
                 GUILayout.Space(5);
                 GUILayout.BeginHorizontal();
+
                 if (!removeX ^ removeY)
                 {
                     if (GUILayout.Button("Remove last X"))
@@ -202,6 +195,7 @@ namespace Operator.Range
                 RangeOfOperator.Range indexOfOperatorLeft = rangeOfOperator.ArrayTransformLeft();
                 DrawArray(indexOfOperatorLeft);
             }
+
             serializedObject.ApplyModifiedProperties();
         }
         void GUIInicialaize() {
@@ -210,7 +204,7 @@ namespace Operator.Range
             styleLabel.alignment = TextAnchor.MiddleCenter;
 
             styleButton = GUI.skin.GetStyle("Button");
-            //(target as LevelData).customGuiStyle = styleButton;
+
             styleButton.margin.left = 10;
             styleButton.margin.right = 10;
             styleButton.alignment = TextAnchor.MiddleCenter;
@@ -235,9 +229,11 @@ namespace Operator.Range
                         array[x, y] = EditorGUILayout.Toggle(array[x, y], GUILayout.MaxWidth(MaxWidth), GUILayout.MaxHeight(MaxHeight));
                     }
                 }
+
                 EditorGUILayout.EndVertical();
 
             }
+
             GUILayout.FlexibleSpace();
 
             EditorGUILayout.EndHorizontal();
@@ -265,6 +261,7 @@ namespace Operator.Range
                         DrowTogle(arrayTransformTop, x, y, indexOfOperator, 25, 20);
                     }
                 }
+
                 EditorGUILayout.EndVertical();
 
             }
@@ -274,123 +271,6 @@ namespace Operator.Range
             EditorGUILayout.EndScrollView();
             GUILayout.Space(5);
         }
-        //public RangeOfOperator.Range ArrayTransformTop()
-        //{
-
-        //    bool[,] arrayTransform = new bool[rangeOfOperator.getRangeDataCount(0), rangeOfOperator.getRangeDataCount()];
-        //    RangeOfOperator.Range indexOfOperator = new RangeOfOperator.Range();
-        //    int newX = -1;
-        //    for (int y = rangeOfOperator.getRangeDataCount(0) - 1; y >= 0; y--)
-        //    {
-        //        newX++;
-        //        int newY = -1;
-
-        //        for (int x = 0; x < rangeOfOperator.getRangeDataCount() ; x++)
-        //        {
-        //            newY++;
-
-        //                //if (isTableFieldNames(newX, newY)) continue;
-        //                bool tempIndex = TogleOperator(x, y);
-        //                if (tempIndex)
-        //                {
-        //                    indexOfOperator = new RangeOfOperator.Range(true, newX, newY);
-        //                }
-        //                arrayTransform[newX, newY] = rangeOfOperator.getRangeDataElementbyIndex(x, y);
-                    
-        //        }
-
-        //    }
-        //    indexOfOperator.array = arrayTransform;
-        //    return indexOfOperator;
-        //}
-        //public RangeOfOperator.Range ArrayTransformBottom()
-        //{
-        //    bool[,] arrayTransform = new bool[rangeOfOperator.getRangeDataCount(0), rangeOfOperator.getRangeDataCount()];
-        //    RangeOfOperator.Range indexOfOperator = new RangeOfOperator.Range();
-        //    newX = -1;
-        //    for (int y = 0; y < rangeOfOperator.getRangeDataCount(0) ; y++)
-        //    {
-        //        newX++;
-        //        int newY = -1;
-
-        //        for (int x = rangeOfOperator.getRangeDataCount() - 1; x >= 0; x--)
-        //        {
-        //            newY++;
-
-        //            //if (isTableFieldNames(newX, newY)) continue;
-        //            bool tempIndex = TogleOperator(x, y);
-        //            if (tempIndex)
-        //            {
-        //                indexOfOperator = new RangeOfOperator.Range(true, newX, newY);
-        //            }
-        //            arrayTransform[newX, newY] = rangeOfOperator.getRangeDataElementbyIndex(x, y);
-
-        //        }
-
-        //    }
-        //    indexOfOperator.array = arrayTransform;
-        //    return indexOfOperator;
-        //}
-        //public RangeOfOperator.Range ArrayTransformRightMain()
-        //{
-
-        //    bool[,] arrayTransform = new bool[rangeOfOperator.getRangeDataCount(), rangeOfOperator.getRangeDataCount(0)];
-        //    RangeOfOperator.Range indexOfOperator = new RangeOfOperator.Range();
-        //    int newX = -1;
-        //    for (int x = 0; x < rangeOfOperator.getRangeDataCount(); x++)
-        //    {
-        //        newX++;
-        //        int newY = -1;
-
-        //        for (int y = 0; y < rangeOfOperator.getRangeDataCount(0); y++)
-        //        {
-        //            newY++;
-
-        //            //if (isTableFieldNames(newX, newY)) continue;
-        //            bool tempIndex = TogleOperator(x, y);
-        //            if (tempIndex)
-        //            {
-        //                indexOfOperator = new RangeOfOperator.Range(true, newX, newY);
-        //            }
-        //            arrayTransform[newX, newY] = rangeOfOperator.getRangeDataElementbyIndex(x, y);
-
-        //        }
-
-        //    }
-        //    indexOfOperator.array = arrayTransform;
-        //    return indexOfOperator;
-        //}
-        //public RangeOfOperator.Range ArrayTransformLeft()
-        //{
-        //    bool[,] arrayTransform = new bool[rangeOfOperator.getRangeDataCount(), rangeOfOperator.getRangeDataCount(0)];
-        //    RangeOfOperator.Range indexOfOperator = new RangeOfOperator.Range();
-        //    newX = -1;
-
-        //    for (int x = rangeOfOperator.getRangeDataCount() - 1; x >= 0; x--)
-        //    {
-        //        newX++;
-        //        int newY = -1;
-
-        //        for (int y = 0; y < rangeOfOperator.getRangeDataCount(0); y++)
-        //            //for (int y = rangeOfOperator.getRangeDataCount(0) - 1; y >= 0; y--)
-        //        {
-        //            newY++;
-
-        //            //if (isTableFieldNames(newX, newY)) continue;
-        //            bool tempIndex = TogleOperator(x, y);
-        //            if (tempIndex)
-        //            {
-        //                indexOfOperator = new RangeOfOperator.Range(true, newX, newY);
-        //            }
-        //            arrayTransform[newX, newY] = 
-        //                rangeOfOperator.getRangeDataElementbyIndex(x, y);
-
-        //        }
-
-        //    }
-        //    indexOfOperator.array = arrayTransform;
-        //    return indexOfOperator;
-        //}
         private void DrowTogle(int x, int y, float MaxWidth, float MaxHeight)
         {
             if (rangeOfOperator.OperatorPositionX == x && rangeOfOperator.OperatorPositionY == y)
@@ -415,18 +295,6 @@ namespace Operator.Range
                 return false;
             }
         }
-        //private bool TogleOperator(int x, int y)
-        //{
-        //    if (rangeOfOperator.OperatorPositionX == x && rangeOfOperator.OperatorPositionY == y)
-        //    {
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
-
         private void DrowTogle(bool[,] array, int x, int y, RangeOfOperator.Range index, float MaxWidth, float MaxHeight)
         {
             if (x == index.x && y == index.y)

@@ -25,31 +25,17 @@ MonoBehaviour:
   curHP: 1768
   maxHP: 1768
   Attack: 333
+  isHealAttack: 0
   Defense: 441
   RES: 10
   RedeployTyme: 70
   DpCost: 18
   Block: 3
   ASPD: 1.2
-  Range: 0
   isLowGrounded: 1
   isHighGrounded: 0
+  HealParticle: {fileID: 0}
+  bulletController: {fileID: 0}
   CurrentEXP: 0
   NextLevelEXP: 100
-  activeSkill: 0
-  skills:
-  - name: Reserve Rations
-    skillImage: {fileID: 21300000, guid: 23c2ab6381c4f454a88fd3e047fd6782, type: 3}
-    description: "The next attack will heal a nearby ally for 120% of \u0413\u0423\u041C's
-      Attack. Can hold 1 charges"
-    cost: 6
-    initCost: 0
-    duration: 0
-  - name: Food Preparation
-    skillImage: {fileID: 21300000, guid: c2ee70151bdcffe4a9cf08cf59fb7de1, type: 3}
-    description: Begins cooking and stops attacking enemies for 10 seconds, Defense
-      +60%. After finishing cooking, focuses on healing nearby allies (attack interval
-      +130%), Attack +43%
-    cost: 36
-    initCost: 12
-    duration: 30
+  skill: {fileID: 11400000, guid: 8789fd099db7c6941a96ec2ebad71c49, type: 2}

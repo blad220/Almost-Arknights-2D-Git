@@ -25,31 +25,18 @@ MonoBehaviour:
   curHP: 937
   maxHP: 937
   Attack: 258
+  isHealAttack: 1
   Defense: 176
   RES: 0
   RedeployTyme: 70
   DpCost: 7
   Block: 1
   ASPD: 1
-  Range: 0
   isLowGrounded: 0
   isHighGrounded: 1
+  HealParticle: {fileID: 451883283204853064, guid: 8ff51a5d3683b9f4a90dba4eef2b7258,
+    type: 3}
+  bulletController: {fileID: 0}
   CurrentEXP: 0
   NextLevelEXP: 100
-  activeSkill: 1
-  skills:
-  - name: Song of Slumber
-    skillImage: {fileID: 21300000, guid: eb78c85565cf41843bc82529335cde21, type: 3}
-    description: Increase attack range, all enemies within attack range enter slumber
-      status (invulnerable+cannot take action). Additionally, trait effect increases
-      to 60%
-    cost: 60
-    initCost: 35
-    duration: 7
-  - name: Song of Battle
-    skillImage: {fileID: 21300000, guid: 633e4139c60c7464b87131f658a52e70, type: 3}
-    description: All allies within attack range gain Attack equal to 80% of Sora's
-      Attack
-    cost: 45
-    initCost: 15
-    duration: 16
+  skill: {fileID: 11400000, guid: 4f3a772626d97d54297f5092de42b198, type: 2}

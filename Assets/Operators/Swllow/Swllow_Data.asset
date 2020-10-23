@@ -31,11 +31,14 @@ MonoBehaviour:
   DpCost: 13
   Block: 1
   ASPD: 1
-  Range: 0
   isLowGrounded: 0
   isHighGrounded: 1
+  HealParticle: {fileID: 0}
+  bulletController: {fileID: 7136212261281377892, guid: 9f5c96b06cb02a647a1545e82c94df44,
+    type: 3}
   CurrentEXP: 0
   NextLevelEXP: 100
+  skill: {fileID: 11400000, guid: 3f62bf1b01a7d364b9fa6775de6c7819, type: 2}
   activeSkill: 1
   skills:
   - name: Soaring Feather
@@ -47,7 +50,7 @@ MonoBehaviour:
     duration: 0
   - name: Reflow
     skillImage: {fileID: 21300000, guid: 6283b7ab9d0d8f84ab11cbadc50d03af, type: 3}
-    description: Attack +15%, attacks deal 3 hits
+    description: Attack +25%
     cost: 36
     initCost: 11
     duration: 16
